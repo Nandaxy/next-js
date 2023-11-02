@@ -104,25 +104,25 @@ const Footer = () => {
         </div>
         <div className="flex justify-center items-center m-4">
           <a
-            href="https://instragram.com/nandaaa_79"
+            href="https://www.instagram.com/nandaaa_79/"
             className="text-xl m-1 hover:text-[#da00ff]"
           >
             <FontAwesomeIcon icon={faInstagram} />
           </a>
           <a
-            href="https://instragram.com/"
+            href="https://wa.me/628996213356"
             className="text-xl m-1 hover:text-[#da00ff]"
           >
             <FontAwesomeIcon icon={faWhatsapp} />
           </a>
           <a
-            href="https://instragram.com/"
+            href="https://youtube.com/@nanda_xyz8272?si=zfR4TEx9kvaYVmhC"
             className="text-xl m-1 hover:text-[#da00ff]"
           >
             <FontAwesomeIcon icon={faYoutube} />
           </a>
           <a
-            href="https://instragram.com/"
+            href="https://www.facebook.com/nanda.ilham.39750"
             className="text-xl m-1 hover:text-[#da00ff]"
           >
             <FontAwesomeIcon icon={faFacebook} />
