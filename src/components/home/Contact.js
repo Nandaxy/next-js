@@ -17,13 +17,6 @@ const Contact = () => {
     const message = `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`;
     const success = await sendTele(message);
 
-    if (success) {
-      alert('Pesan terkirim!');
-    } else {
-      alert('Terjadi kesalahan saat mengirim pesan.');
-    }
-  };
-
   const handleChange = (e) => {
     setFormData({
       ...formData,
