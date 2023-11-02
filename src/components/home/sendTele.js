@@ -20,29 +20,10 @@ const sendTele = async (message) => {
       throw new Error('Error sending message to Telegram');
     }
 
-    toast.success('Pesan berhasil terkirim!', {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
 
     return true;
   } catch (error) {
     console.error('Error:', error);
-
-    toast.error('Gagal mengirim pesan ke Telegram!', {
-      position: "top-right",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
 
     return false;
   }

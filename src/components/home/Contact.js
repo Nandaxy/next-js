@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import sendTele from './sendTele';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +18,14 @@ const Contact = () => {
     // Kirim pesan ke bot Telegram
     const message = `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`;
     const success = await sendTele(message);
+
+    if (success) {
+      toast.success('Pesan terkirim!');
+    } else {
+      toast.error('Terjadi kesalahan saat mengirim pesan.');
+    }
+  };
+
 
   const handleChange = (e) => {
     setFormData({
@@ -80,6 +90,7 @@ const Contact = () => {
             </div>
           </div>
         </form>
+        <ToastContainer />
       </div>
     </div>
   );
