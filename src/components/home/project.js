@@ -18,17 +18,21 @@ const Project = () => {
   const projects = [
     { 
       id: 1,
-      title: 'Project 1',
-      description: 'Project 1 Description',
+      title: 'Login Page',
+      description: 'sebauah web static Login page,yang dibuat pada saat gabut',
       imageSrc: '/malas.png',
-      imageAlt: 'Project 1'
+      imageAlt: 'Project 1',
+      github: 'https://github.com/Nandaxy/Web-Project',
+      demoLink: 'https://login-sigin.nanda79.repl.co/login.html'
     },
     { 
       id: 2,
       title: 'Project 2',
       description: 'Project 2 Description',
       imageSrc: '/malas.png',
-      imageAlt: 'Project 2'
+      imageAlt: 'Project 2',
+      github: 'https://github.com',
+      demoLink: 'https://youtube.com'
     },
   ];
 
