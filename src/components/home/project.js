@@ -20,7 +20,7 @@ const Project = () => {
       id: 1,
       title: 'Login Page',
       description: 'sebauah web static Login page,yang dibuat pada saat gabut',
-      imageSrc: '/malas.png',
+      imageSrc: '/Tab Baru - Google Chrome 05_11_2023 17.18.52.png',
       imageAlt: 'Project 1',
       github: 'https://github.com/Nandaxy/Web-Project',
       demoLink: 'https://login-sigin.nanda79.repl.co/login.html'
