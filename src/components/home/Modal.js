@@ -17,9 +17,9 @@ const Modal = ({ onClose, project }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-90">
-      <div className="modal-background fixed inset-0 bg-black opacity-50 z-[-1]"></div>
+      <div className="modal-background fixed inset-0 bg-black opacity-60 z-[-1]"></div>
       <div className="modal-overlay" onClick={onClose}></div>
-      <div className="flex flex-col justify-center items-center modal-container bg-white  w-fit p-8">
+      <div className="flex flex-col justify-center items-center modal-container bg-white dark:bg-black w-fit p-8">
         <h2 className="text-2xl font-bold mb-4">{project.title}</h2>
         <Image
           src={project.imageSrc}
@@ -33,7 +33,7 @@ const Modal = ({ onClose, project }) => {
             <a href={project.github} className="mr-4 text-xl">
               <FontAwesomeIcon icon={faGithub} />
             </a>
-            <a href={project.demoLink} className="mr-4 text-xl">
+            <a href={project.demoLink} className="mr-4 text-xl text-dark dark:text-white dark:bg-white">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="1em"

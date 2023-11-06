@@ -1,5 +1,3 @@
-import { toast } from "react-toastify";
-
 const sendTele = async (message) => {
   const token = '5707387674:AAFVS_oBVCiPvi0e0EavpKyMNg0cx9ss0mQ';
   const chatId = '1216230336';

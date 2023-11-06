@@ -39,7 +39,7 @@ const Contact = () => {
       <div className="my-auto">
         <div className="w-full px-4">
           <div className="max-w-xl mx-auto text-center mb-16">
-            <h2 className="font-bold text-dark text-3xl mb-4">Contact Me</h2>
+            <h2 className="font-bold text-3xl mb-4">Contact Me</h2>
             <p className="font-small text-md text-secondary">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, maxime!
             </p>

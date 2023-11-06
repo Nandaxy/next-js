@@ -13,9 +13,12 @@ module.exports = {
       },
       colors: {
         primary: '#4682A9',
-        footer: '#0F172A'
+        darkPrimary: '#5099c7',
+        footer: '#0F172A',
+        dark: '#121212',
       },
     },
   },
   plugins: [],
+  darkMode: "class",
 }

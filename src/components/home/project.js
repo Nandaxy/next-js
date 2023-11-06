@@ -37,13 +37,13 @@ const Project = () => {
   ];
 
   return (
-    <div id="project" className="h-full w-full bg-gray-100 flex justify-center items-center pb-20">
-      <div className="text-center bg-white px-6 pt-6 pb-14 rounded-xl shadow-xl">
-        <h1 className="font-bold text-dark text-3xl mb-4">Project</h1>
+    <div id="project" className="h-full w-full bg-gray-100 dark:bg-dark dark:md:bg-black flex justify-center items-center pb-20">
+      <div className="text-center bg-white dark:bg-dark px-6 pt-6 pb-14 rounded-xl shadow-xl">
+        <h1 className="font-bold text-3xl mb-4">Project</h1>
         <p className="mb-10">Beberapa project yang sudah pernah saya buat</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.map(project => (
-            <div key={project.id} className="bg-gray-100 p-4 shadow-lg rounded-lg cursor-pointer hover:scale-105 transition-transform" onClick={() => openModal(project)}>
+            <div key={project.id} className="bg-gray-100 dark:bg-[#1a1a1a] p-4 shadow-lg rounded-lg cursor-pointer hover:scale-105 transition-transform" onClick={() => openModal(project)}>
               <Image src={project.imageSrc} width={400} height={200} alt={project.imageAlt} />
               <p className="text-lg mt-4">{project.title}</p>
             </div>
