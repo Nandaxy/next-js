@@ -1,6 +1,7 @@
-import fs from "fs";
-import path from "path";
-import fetch from "node-fetch";
+import { useState } from 'react';
+import fs from 'fs';
+import path from 'path';
+import fetch from 'node-fetch';
 
 const getRandomImage = (imageLinks, localImageDir) => {
   const allImages = [...imageLinks, ...getLocalImages(localImageDir)];
@@ -20,32 +21,32 @@ const getLocalImages = (localImageDir) => {
 
 async function GET(request) {
   try {
-    const jsonData = fs.readFileSync("data/anime/ikuyo.json", "utf-8");
+    const jsonData = fs.readFileSync('data/anime/ikuyo.json', 'utf-8');
     const imageLinks = JSON.parse(jsonData);
 
-    const localImageDir = "data/anime/img";
+    const localImageDir = 'data/anime/img';
 
+    const [currentImage, setCurrentImage] = useState(null);
     const randomImage = getRandomImage(imageLinks, localImageDir);
+    setCurrentImage(randomImage);
 
-    if (randomImage) {
+    if (currentImage) {
       const imageBuffer =
-        randomImage.startsWith("http")
-          ? await (await fetch(randomImage)).buffer()
-          : fs.readFileSync(randomImage);
+        currentImage.startsWith('http')
+          ? await (await fetch(currentImage)).buffer()
+          : fs.readFileSync(currentImage);
 
       return new Response(imageBuffer, {
         headers: {
-          "Content-Type": randomImage.startsWith("http")
-            ? "image/jpeg"
-            : "image/png",
+          'Content-Type': currentImage.startsWith('http') ? 'image/jpeg' : 'image/png',
         },
       });
     } else {
-      return new Response("No Image Available", { status: 404 });
+      return new Response('No Image Available', { status: 404 });
     }
   } catch (error) {
     console.error(error);
-    return new Response("Internal Server Error", { status: 500 });
+    return new Response('Internal Server Error', { status: 500 });
   }
 }
 
