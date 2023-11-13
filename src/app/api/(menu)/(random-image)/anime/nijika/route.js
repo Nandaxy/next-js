@@ -1,6 +1,8 @@
 import fs from "fs";
 import fetch from "node-fetch";
 
+export const fetchCache = 'force-no-store';
+
 const getRandomImage = (imageLinks, sessionImages) => {
   const remainingImages = imageLinks.filter(
     (img) => !sessionImages.includes(img)
@@ -8,7 +10,6 @@ const getRandomImage = (imageLinks, sessionImages) => {
 
   if (remainingImages.length === 0) {
     sessionImages.length = 0;
-
     return imageLinks[0];
   } else {
     const randomIndex = Math.floor(Math.random() * remainingImages.length);
