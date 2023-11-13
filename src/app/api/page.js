@@ -2,8 +2,8 @@ import Link from "next/link";
 
 const PageApi = () => {
   return (
-    <div className="bg-gradient-to-r from-blue-400 to-purple-500 min-h-screen flex flex-col justify-center items-center text-white">
-      <h1 className="text-2xl md:text-4xl  font-bold mb-4">Welcome to the Free API World</h1>
+    <div className="bg-gradient-to-r from-blue-400 to-purple-500 dark:from-gray-800 dark:to-gray-900 min-h-screen flex flex-col justify-center items-center text-white">
+      <h1 className="text-2xl md:text-4xl font-bold mb-4">Welcome to the Free API World</h1>
       <p className="md:text-lg text-sm mb-8">Explore a world of free APIs for your projects.</p>
       <Link
         href="/api/mulai"
