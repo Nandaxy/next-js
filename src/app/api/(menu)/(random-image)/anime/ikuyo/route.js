@@ -32,10 +32,12 @@ async function GET(request) {
     const imageBuffer = await imageResponse.buffer();
 
     return new Response(imageBuffer, {
-      headers: {
-        "Content-Type": imageResponse.headers.get("Content-Type"),
-      },
-    });
+   headers: {
+    "Content-Type": imageResponse.headers.get("Content-Type"),
+    "Cache-Control": "no-store, max-age=0",
+  },
+});
+
   } catch (error) {
     console.error(error);
     return new Response("Internal Server Error", { status: 500 });
