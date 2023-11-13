@@ -1,86 +1,90 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
   const pathname = usePathname();
+  const [activeLinks, setActiveLinks] = useState([]);
+
+  useEffect(() => {
+    const activePaths = [
+      "/api/mulai",
+      "/api/quickstart",
+      "/api/api-reference/anime",
+    ];
+
+    const newActiveLinks = activePaths.map((path) => ({
+      path,
+      isActive: pathname === path,
+    }));
+
+    setActiveLinks(newActiveLinks);
+  }, [pathname]);
 
   return (
-    <>
     <div
-      className="z-20 hidden lg:block fixed bottom-0 right-auto w-[18rem] pl-4 pr-6 pb-10 overflow-y-scroll stable-scrollbar-gutter top-[4rem]"
+      className="z-20 hidden md:block fixed bottom-0 right-auto w-[18rem] pl-4 pr-6 pb-10 overflow-y-scroll stable-scrollbar-gutter top-[4rem]"
       id="sidebar"
     >
       <div className="p-6">
-        <div className="mb-6">
-          <h5 className="px-2 mb-3.5 lg:mb-2.5 font-semibold text-gray-900 dark:text-gray-200">
+        <div className="my-4">
+          <h5 className="px-2 mb-2.5 font-semibold text-gray-900 dark:text-gray-200">
             Get Started
           </h5>
           <div className="flex flex-col">
-            <Link
-              className="mt-2 lg:mt-0 flex items-center py-2 px-4 rounded-lg focus:outline-primary dark:focus:outline-primary-light hover:bg-gray-600/5 dark:hover:bg-gray-200/5 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
-              href="/api/mulai"
-            >
-              <div className="flex-1 flex items-center space-x-2.5">
-                <div className="text-sm">Introduction</div>
-              </div>
-            </Link>
-            <Link
-              className="mt-2 lg:mt-0 flex items-center py-2 px-4 rounded-lg focus:outline-primary dark:focus:outline-primary-light hover:bg-gray-600/5 dark:hover:bg-gray-200/5 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
-              href="/api/quickstart"
-            >
-              <div className="flex-1 flex items-center space-x-2.5">
-                <div className="text-sm">Quickstart</div>
-              </div>
-            </Link>
+            <LinkStyles link="/api/mulai" activeLinks={activeLinks}>
+              <div className="text-sm">Introduction</div>
+            </LinkStyles>
+            <LinkStyles link="/api/quickstart" activeLinks={activeLinks}>
+              <div className="text-sm">Quickstart</div>
+            </LinkStyles>
           </div>
         </div>
-        <div className="mb-6">
-          <h5 className="px-2 mb-3.5 lg:mb-2.5 font-semibold text-gray-900 dark:text-gray-200">
+        <div className="my-4">
+          <h5 className="px-2 mb-1.5 font-semibold text-gray-900 dark:text-gray-200">
             Test
           </h5>
           <div className="flex flex-col">
-            <Link
-              className="mt-2 lg:mt-0 flex items-center py-2 px-4 rounded-lg focus:outline-primary dark:focus:outline-primary-light hover:bg-gray-600/5 dark:hover:bg-gray-200/5 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
-              href="/api/test"
-            >
-              <div className="flex-1 flex items-center space-x-2.5">
-                <div className="text-sm">Testing</div>
-              </div>
-            </Link>
+            <LinkStyles link="/api/test" activeLinks={activeLinks}>
+              <div className="text-sm">Testing</div>
+            </LinkStyles>
           </div>
         </div>
-        <div>
-          <h5 className="px-2 mb-3.5 lg:mb-2.5 font-semibold text-gray-900 dark:text-gray-200">
-            Image
+        <div className="my-4">
+          <h5 className="px-2 mb-1.5 font-semibold text-gray-900 dark:text-gray-200">
+            Random Image
           </h5>
           <div className="flex flex-col">
-            <Link
-              className="mt-2 lg:mt-0 flex items-center py-2 px-4 rounded-lg focus:outline-primary dark:focus:outline-primary-light hover:bg-gray-600/5 dark:hover:bg-gray-200/5 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
-              href="/api/anime/test"
+            <LinkStyles
+              link="/api/api-reference/anime"
+              activeLinks={activeLinks}
             >
-              <div className="flex-1 flex items-center space-x-2.5">
-                <div className="text-sm flex flex-warp">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="1em"
-                    viewBox="0 0 512 512"
-                    className="my-auto mr-2"
-                  >
-                    {" "}
-                    <path d="M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z" />
-                  </svg>
-                 Anime
-                </div>
-              </div>
-            </Link>
+              <div className="text-sm flex flex-warp">Anime</div>
+            </LinkStyles>
           </div>
         </div>
       </div>
     </div>
-    </>
   );
 };
+
+const LinkStyles = ({ link, activeLinks, children }) => {
+  const isActive = activeLinks.find((item) => item.path === link)?.isActive;
+
+  return (
+    <Link
+      href={link}
+      className={`mt-2 flex items-center py-2 px-4 rounded-lg focus:outline-primary dark:focus:outline-primary-light ${
+        isActive
+          ? "bg-gray-600/5 text-apiPrimary font-semibold dark:bg-gray-200/5 dark:text-apiPrimary"
+          : "hover:bg-gray-600/5 dark:hover:bg-gray-200/5 text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300"
+      }`}
+    >
+      <div className="flex-1 flex items-center space-x-2.5">{children}</div>
+    </Link>
+  );
+};
+
 export default Sidebar;
