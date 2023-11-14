@@ -29,7 +29,7 @@ async function GET(request) {
 
     const randomImage = getRandomImage(imageLinks, sessionImages);
 
-    const imageResponse = await fetch(randomImage);
+    const imageResponse = await fetch(randomImage, { cache: 'no-store' });
     const imageBuffer = await imageResponse.buffer();
 
     return new Response(imageBuffer, {
