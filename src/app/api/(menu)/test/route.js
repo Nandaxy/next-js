@@ -1,14 +1,31 @@
-const fs = require('fs');
+import { NextRequest, NextResponse } from "next/server";
 
-async function GET(request) {
-    try {
-        const jsonData = fs.readFileSync('data/test.json', 'utf-8');
-        
-        return new Response(jsonData, { headers: { 'Content-Type': 'application/json' } });
-    } catch (error) {
-        console.error(error);
-        return new Response('Internal Server Error', { status: 500 });
+const data = [
+  {
+    id: 1,
+    name: 'sepatu',
+    price: 100000
+  },
+  {
+    id: 2,
+    name: 'baju',
+    price: 100889
+  },
+];
+
+export async function GET(request) {
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
+
+  if (id) {
+    const detailProduct = data.find(item => item.id === Number(id));
+
+    if (detailProduct) {
+      return NextResponse.json({ status: 200, message: "success", data: detailProduct });
     }
-}
 
-module.exports = { GET };
+    return NextResponse.json({ status: 404, message: "Not Found", data: null });
+  }
+
+  return NextResponse.json({ status: 200, message: "success", data });
+}

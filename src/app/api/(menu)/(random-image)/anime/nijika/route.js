@@ -1,5 +1,6 @@
-import fs from "fs";
-import fetch from "node-fetch";
+import { NextResponse } from 'next/server';
+import fs from 'fs';
+import fetch from 'node-fetch';
 
 const getRandomImage = (imageLinks, sessionImages) => {
   const remainingImages = imageLinks.filter(
@@ -23,7 +24,7 @@ const sessionImages = [];
 
 async function GET(request) {
   try {
-    const jsonData = fs.readFileSync("data/anime/nijika.json", "utf-8");
+    const jsonData = fs.readFileSync('data/anime/nijika.json', 'utf-8');
     const imageLinks = JSON.parse(jsonData);
 
     const randomImage = getRandomImage(imageLinks, sessionImages);
@@ -31,14 +32,14 @@ async function GET(request) {
     const imageResponse = await fetch(randomImage);
     const imageBuffer = await imageResponse.buffer();
 
-    return new Response(imageBuffer, {
+    return new NextResponse(imageBuffer, {
       headers: {
-        "Content-Type": imageResponse.headers.get("Content-Type"),
+        'Content-Type': imageResponse.headers.get('Content-Type'),
       },
     });
   } catch (error) {
     console.error(error);
-    return new Response("Internal Server Error", { status: 500 });
+    return new NextResponse('Internal Server Error', { status: 500 });
   }
 }
 
