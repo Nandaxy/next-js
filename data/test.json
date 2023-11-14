@@ -1,13 +1,7 @@
-{
-    "allOf": [
-        {
-            "$ref": "./devContainer.base.schema.json"
-        },
-        {
-            "$ref": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/configuration-editing/schemas/devContainer.codespaces.schema.json"
-        },
-        {
-            "$ref": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/configuration-editing/schemas/devContainer.vscode.schema.json"
-        }
-    ]
-}
+[
+  "https://www.example.com/link1",
+  "https://www.example.com/link2",
+  "https://www.example.com/link3",
+  "https://www.example.com/link4",
+  "https://www.example.com/link5"
+]
