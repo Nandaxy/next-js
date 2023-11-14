@@ -27,6 +27,9 @@ async function GET(request) {
 
     const randomImage = getRandomImage(imageLinks, sessionImages);
 
+    // Tambahkan log untuk menampilkan link gambar
+    console.log("Link Gambar:", randomImage);
+
     const imageResponse = await fetch(randomImage, { cache: 'no-store' });
     const imageBuffer = await imageResponse.buffer();
 
