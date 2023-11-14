@@ -1,40 +1,31 @@
-const fs = require('fs');
+import { NextRequest, NextResponse } from "next/server";
 
-// Inisialisasi variabel global untuk menyimpan indeks terakhir
-let lastUsedIndex = -1;
+const data = [
+  {
+    id: 1,
+    name: 'sepatu',
+    price: 100000
+  },
+  {
+    id: 2,
+    name: 'baju',
+    price: 100889
+  },
+];
 
-async function GET(request) {
-    try {
-        const jsonData = fs.readFileSync('data/test.json', 'utf-8');
-        const urls = JSON.parse(jsonData);
+export async function GET(request) {
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
 
-        // Memastikan indeks yang dihasilkan berbeda dari yang terakhir kali digunakan
-        let randomIndex;
-        do {
-            randomIndex = Math.floor(Math.random() * urls.length);
-        } while (randomIndex === lastUsedIndex);
+  if (id) {
+    const detailProduct = data.find(item => item.id === Number(id));
 
-        // Menyimpan indeks terakhir yang digunakan
-        lastUsedIndex = randomIndex;
-
-        // Mendapatkan URL menggunakan indeks yang dihasilkan
-        const randomUrl = urls[randomIndex];
-
-        // Menambahkan informasi status code dan nama penulis
-        const responseBody = {
-            status: 'success',
-            data: {
-                url: randomUrl,
-                author: 'Nanda'
-            }
-        };
-
-        // Mengembalikan respons dengan informasi status code, nama penulis, dan URL acak
-        return new Response(JSON.stringify(responseBody), { headers: { 'Content-Type': 'application/json' }, status: 200 });
-    } catch (error) {
-        console.error(error);
-        return new Response('Internal Server Error', { status: 500 });
+    if (detailProduct) {
+      return NextResponse.json({ status: 200, message: "success", data: detailProduct });
     }
-}
 
-module.exports = { GET };
+    return NextResponse.json({ status: 404, message: "Not Found", data: null });
+  }
+
+  return NextResponse.json({ status: 200, message: "success", data });
+}
