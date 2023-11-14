@@ -1,8 +1,6 @@
 import fs from "fs";
 import fetch from "node-fetch";
 
-export const fetchCache = 'force-no-store';
-
 const getRandomImage = (imageLinks, sessionImages) => {
   const remainingImages = imageLinks.filter(
     (img) => !sessionImages.includes(img)
