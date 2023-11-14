@@ -30,9 +30,11 @@ async function GET(request) {
     const imageResponse = await fetch(randomImage, { cache: 'no-store' });
     const imageBuffer = await imageResponse.buffer();
 
+    // Tambahkan header Cache-Control pada respons
     return new Response(imageBuffer, {
       headers: {
         "Content-Type": imageResponse.headers.get("Content-Type"),
+        "Cache-Control": "no-store", // Tambahkan ini
       },
     });
   } catch (error) {
