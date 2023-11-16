@@ -12,10 +12,9 @@ const SearchBox = () => {
     setIsOpen(false);
   };
 
-
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    // Implement logic untuk melakukan pencarian
+    // Implementasi logika untuk melakukan pencarian
     console.log("Melakukan pencarian...");
   };
 
@@ -34,7 +33,7 @@ const SearchBox = () => {
   };
 
   const handleClickOutside = (e) => {
-    // Menutup modal saat klik di luar modal dan text input
+    // Menutup modal saat klik di luar modal, asalkan bukan elemen input
     if (
       modalRef.current &&
       !modalRef.current.contains(e.target) &&
@@ -56,6 +55,7 @@ const SearchBox = () => {
       window.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
   return (
     <>
       <div className="relative inline-block">
@@ -83,8 +83,8 @@ const SearchBox = () => {
           </div>
         </div>
         {isOpen && (
-          <div  onClick={closeMenuSearch} className="fixed inset-0 bg-gray-900 justify-center flex  backdrop-blur-md">
-            <div className="z-[99999] flex mt-10 md:mt-36 px-4 py-6 items-center justify-between dark:bg-dark bg-white h-8 rounded-lg max-w-full">
+          <div onClick={closeMenuSearch} className="fixed inset-0 bg-gray-900 justify-center flex backdrop-blur-md">
+            <div className="z-[99999] flex mt-10 md:mt-36 px-4 py-6 items-center justify-between dark:bg-dark bg-white h-8 rounded-lg max-w-full" ref={modalRef}>
               <div className="items-center flex">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
