@@ -25,7 +25,7 @@ const Sidebar = () => {
 
   return (
     <div
-      className="z-20 hidden md:block fixed bottom-0 right-auto w-[18rem] pl-4 pr-6 pb-10 overflow-y-scroll stable-scrollbar-gutter top-[4rem]"
+      className="z-[5] hidden md:block fixed bottom-0 right-auto w-[18rem] pl-4 pr-6 pb-12 overflow-y-scroll stable-scrollbar-gutter top-[4.5rem]"
       id="sidebar"
     >
       <div className="p-6">

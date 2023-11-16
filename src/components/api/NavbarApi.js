@@ -2,12 +2,11 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import DarkModeBtn from "./darkModeBtn";
+import DarkModeBtn from "../darkModeBtn";
+import SearchBox from "./searchBox";
 
-const Navbar = () => {
+const NavbarApi = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -18,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 w-full opacity-95 z-1000">
+    <div className="fixed top-0 left-0 w-full opacity-95 z-10">
       <nav className="bg-white dark:bg-black p-4 flex justify-between items-center border-b dark:border-gray-800">
         <div className="flex items-center space-x-4">
           <button
@@ -44,41 +43,11 @@ const Navbar = () => {
             </span>
           </Link>
 
-          <div className="hidden md:block px-4">
-            <Link className="mx-2 hover:text-primary" href="/docs">
-              Dokumentasi
-            </Link>
-            <Link className="mx-2 hover:text-primary" href="/blog">
-              Artikel
-            </Link>
-            <Link className="mx-2 hover:text-primary" href="/api">
-              Api
-            </Link>
-          </div>
+        </div>
+        <div>
+            <SearchBox/>
         </div>
         <div className="hidden md:flex items-center space-x-4">
-          {pathname === "/" && (
-            <>
-              <Link href="#" className="hover:text-primary font-semibold">
-                Home
-              </Link>
-              <Link href="#about" className="hover:text-primary font-semibold">
-                About
-              </Link>
-              <Link
-                href="#contact"
-                className="hover:text-primary font-semibold"
-              >
-                Contact
-              </Link>
-              <Link
-                href="#project"
-                className="hover:text-primary font-semibold"
-              >
-                Project
-              </Link>
-            </>
-          )}
           <Link
             href="https://github.com/Nandaxy"
             target="_blank"
@@ -140,31 +109,6 @@ const Navbar = () => {
         <div className="flex items-center space-x-2 mb-4 border-b">
           <span className="text-xl font-bold text-purple-600">Nanda</span>
         </div>
-        {pathname === "/" && (
-          <>
-            <Link
-              href="#"
-              className="block text-lg mb-2 hover:bg-gray-100 dark:hover:bg-gray-500 p-2 rounded"
-              onClick={closeMenu}
-            >
-              Home
-            </Link>
-            <Link
-              href="#about"
-              className="block text-lg mb-2 hover:bg-gray-100 dark:hover:bg-gray-500 p-2 rounded"
-              onClick={closeMenu}
-            >
-              About
-            </Link>
-            <Link
-              href="#contact"
-              className="block text-lg mb-2 hover:bg-gray-100 dark:hover:bg-gray-500 p-2 rounded"
-              onClick={closeMenu}
-            >
-              Contact
-            </Link>
-          </>
-        )}
         <Link
           href="/docs"
           className="block text-lg mb-2 hover:bg-gray-100 dark:hover:bg-gray-500 p-2 rounded"
@@ -191,4 +135,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarApi;

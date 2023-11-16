@@ -1,4 +1,3 @@
-import ApiTestComponent from "@/components/api/ApiTestComponent";
 import Link from "next/link";
 
 const AnimeReference = () => {
@@ -22,7 +21,6 @@ const AnimeReference = () => {
               <td className="py-2 px-4 border-b text-left">Nijika</td>
               <td className="py-2 px-4 border-b text-left">jpg/png</td>
               <td className="py-2 px-4 border-b text-left">
-                <ApiTestComponent apiUrl="/api/anime/nijika" />
               </td>
               <td className="py-2 px-4 border-b text-left">
                 <Link href="/api/anime/nijika" className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
@@ -34,7 +32,6 @@ const AnimeReference = () => {
               <td className="py-2 px-4 border-b text-left">Ikuyo</td>
               <td className="py-2 px-4 border-b text-left">jpg/png</td>
               <td className="py-2 px-4 border-b text-left">
-                <ApiTestComponent apiUrl="/api/anime/ikuyo" />
               </td>
               <td className="py-2 px-4 border-b text-left">
               <Link href="/api/anime/ikuyo" className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">

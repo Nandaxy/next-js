@@ -6,15 +6,15 @@ const Mulai = () => {
         <h2 className="font-bold text-4xl my-2">Introduction</h2>
         <p className="font-medium">Lorem ipsum</p>
         <div className="my-10">
-          <p className="text-m mb-4 text-gray-800">
+          <p className="text-m mb-4 text-gray-800 dark:text-gray-200">
             NextAPI handles the heavy lifting for common SaaS features such as
             authentication, team management, invites, subscriptions, and more.
           </p>
-          <p className="text-m mb-4 text-gray-800">
+          <p className="text-m mb-4 text-gray-800 dark:text-gray-200">
             NextAPI handles the heavy lifting for common SaaS features such as
             authentication, team management, invites, subscriptions, and more.
           </p>
-          <p className="text-m mb-4 text-gray-800">
+          <p className="text-m mb-4 text-gray-800 dark:text-gray-200">
             NextAPI handles the heavy lifting for common SaaS features such as
             authentication, team management, invites, subscriptions, and more.
           </p>
@@ -25,8 +25,9 @@ const Mulai = () => {
           id="build"
         >
           Build With
-          <span className="my-auto text-xl ml-2 absolute transform opacity-0 group-hover:opacity-100 transition-opacity inline-block">
+          <span className="-z-100  my-auto text-xl ml-2 absolute transform opacity-0 group-hover:opacity-100 transition-opacity inline-block">
             <svg
+              className="fill-black dark:fill-white"
               xmlns="http://www.w3.org/2000/svg"
               height="1em"
               viewBox="0 0 640 512"
@@ -35,7 +36,7 @@ const Mulai = () => {
             </svg>
           </span>
         </a>
-        <ul className="text-gray-800 my-4">
+        <ul className="text-gray-800 my-4 dark:text-gray-200">
           <li>
             <span className="pr-3 text-2xl m-auto font-medium">-</span>Next js
           </li>
