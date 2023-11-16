@@ -33,11 +33,12 @@ const SearchBox = () => {
   };
 
   const handleClickOutside = (e) => {
-    // Menutup modal saat klik di luar modal, asalkan bukan elemen input
+    // Menutup modal saat klik di luar modal, asalkan bukan elemen input atau elemen toggle
     if (
       modalRef.current &&
       !modalRef.current.contains(e.target) &&
-      e.target.tagName !== "INPUT"
+      e.target.tagName !== "INPUT" &&
+      !e.target.classList.contains("toggle-button") // Sesuaikan dengan kelas yang digunakan untuk membuka modal
     ) {
       setIsOpen(false);
     }
@@ -62,7 +63,7 @@ const SearchBox = () => {
         <div className="hidden md:block">
           <div 
             onClick={handleSearchClick}
-            className="border-blue-50 dark:border-gray-900 border-2 flex justify-between w-80 p-2 rounded-md cursor-pointer"
+            className="border-blue-50 dark:border-gray-900 border-2 flex justify-between w-80 p-2 rounded-md cursor-pointer toggle-button" // Sesuaikan dengan kelas yang digunakan untuk membuka modal
           >
             <div className="flex items-center justify-center">
               <svg
