@@ -122,6 +122,7 @@ const SearchBox = () => {
                 <div className="bg-white max-h-96 p-4 rounded-b-lg">
                   {searchResults.map((page, index) => (
                     <div
+
                       className="bg-gray-100 p-2 rounded-md flex items-center my-3"
                       key={index}
                     >
