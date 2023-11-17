@@ -1,4 +1,6 @@
+
 import Link from "next/link";
+
 
 const PageApi = () => {
   return (
@@ -14,5 +16,10 @@ const PageApi = () => {
     </div>
   );
 };
+
+export const metadata = {
+  title: 'API - Nanda',
+  description: 'Explore a world of free APIs for your projects.',
+}
 
 export default PageApi;

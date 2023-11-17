@@ -48,5 +48,8 @@ const Mulai = () => {
 
   );
 };
-
+export const metadata = {
+  title: 'API - Mulai',
+  description: 'Explore a world of free APIs for your projects.',
+}
 export default Mulai;

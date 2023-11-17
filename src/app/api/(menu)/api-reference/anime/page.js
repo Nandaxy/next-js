@@ -45,5 +45,8 @@ const AnimeReference = () => {
     </div>
   );
 };
-
+export const metadata = {
+  title: 'API - Anime',
+  description: 'Explore a world of free APIs for your projects.',
+}
 export default AnimeReference;
