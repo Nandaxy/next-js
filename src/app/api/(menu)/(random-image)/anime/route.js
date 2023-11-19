@@ -21,15 +21,7 @@ export async function GET(request) {
     const detail = data.find((item) => item.name === name);
 
     if (detail) {
-      // Increment counter
-      database.counters.randomImages.anime[name] =
-        (database.counters.randomImages.anime[name] || 0) + 1;
-
-      database.counters.totalRequests++;
-
-      // Save updated counters to database.json
-      fs.writeFileSync(databasePath, JSON.stringify(database, null, 2));
-
+      
       const randomImage = getRandomImage(detail.images);
 
       if (!randomImage.startsWith("http")) {
