@@ -35,7 +35,7 @@ const Hero = () => {
             Nice to meet you,
             <span className="text-black dark:text-white font-semibold"> Thank you</span>
           </p>
-          <Link href="#contact" className="bg-primary dark:bg-darkPrimary text-base font-semibold text-white py-3 px-8 rounded-full hover:shadow-xl hover:text-black transition duration-300 ease-in-out">Contact</Link>
+          <Link href="#contact" className="bg-primary dark:bg-darkPrimary text-base font-semibold text-white py-3 px-8 rounded-full hover:shadow-xl hover:text-black transition duration-300 ease-in-out">Get Started</Link>
         </div>
       </div>
       <div className="w-full h-1/2 flex justify-center items-center md:w-1/2 md:h-full">

@@ -23,7 +23,7 @@ const AnimeReference = () => {
               <td className="py-2 px-4 border-b text-left">
               </td>
               <td className="py-2 px-4 border-b text-left">
-                <Link href="/api/anime/nijika" className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
+                <Link href="/api/anime?name=nijika" className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
                   GET
                 </Link>
               </td>
@@ -34,7 +34,7 @@ const AnimeReference = () => {
               <td className="py-2 px-4 border-b text-left">
               </td>
               <td className="py-2 px-4 border-b text-left">
-              <Link href="/api/anime/ikuyo" className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
+              <Link href="/api/anime?name=ikuyo" className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
                   GET
                 </Link>
               </td>

@@ -9,5 +9,8 @@ const Quickstart = () => {
       </div>
     )
 }
-
+export const metadata = {
+  title: 'API - Quickstart',
+  description: 'Explore a world of free APIs for your projects.',
+}
 export default Quickstart

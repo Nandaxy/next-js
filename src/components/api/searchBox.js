@@ -35,11 +35,23 @@ const SearchBox = () => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.ctrlKey && event.key === "k") {
+      event.preventDefault(); 
+      handleSearchClick();
+    } else if (event.key === "Escape") {
+      event.preventDefault();     
+      handleCloseModal();
+    }
+  };    
+
   useEffect(() => {
     document.body.addEventListener("click", handleOutsideClick);
+    document.body.addEventListener("keydown", handleKeyDown);
 
     return () => {
       document.body.removeEventListener("click", handleOutsideClick);
+      document.body.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen]);
 
@@ -96,7 +108,7 @@ const SearchBox = () => {
                   isOpen ? "dark:bg-dark bg-white" : ""
                 } h-8 ${
                   searchText.trim() !== "" ? "rounded-t-lg" : "rounded-lg"
-                } max-w-full`}
+                } max-w-full modal-container`}
               >
                 <div className="items-center flex">
                   {/* ... (bagian lain dari komponen) */}
@@ -104,7 +116,7 @@ const SearchBox = () => {
                     ref={inputRef}
                     type="text"
                     placeholder="Find or ask anything..."
-                    className="w-96 h-8 focus:outline-none text-sm mx-2 dark:bg-dark bg-white py-6"
+                    className="w-80 md:w-96 h-8 focus:outline-none text-sm mx-2 dark:bg-dark bg-white py-6"
                     value={searchText}
                     onChange={handleInputChange}
                   />
@@ -119,18 +131,19 @@ const SearchBox = () => {
                 </div>
               </div>
               {searchText.trim() !== "" && (
-                <div className="bg-white max-h-96 p-4 rounded-b-lg">
+                <div className="bg-white dark:bg-dark max-h-96 p-4 rounded-b-lg">
                   {searchResults.map((page, index) => (
-                    <div
-
-                      className="bg-gray-100 p-2 rounded-md flex items-center my-3"
-                      key={index}
-                    >
-                      <span className="mr-2 border-2 border-gray-200 p-2 rounded-lg text-black/60">
-                        #
-                      </span>
-
-                      <Link href={page.link} onClick={handleCloseModal}>{page.title}</Link>
+                    <div key={index}>
+                      <Link
+                        className="bg-gray-100 dark:bg-[#000000]/70 p-2 rounded-md flex items-center my-3"
+                        href={page.link}
+                        onClick={handleCloseModal}
+                      >
+                        <span className="mr-2 border-2 border-gray-200 dark:border-[#000000]/70 p-2 rounded-lg text-black/60 dark:text-white/60">
+                          #
+                        </span>
+                        {page.title}
+                      </Link>
                     </div>
                   ))}
                   {searchResults.length === 0 && <p>No results found.</p>}
