@@ -13,7 +13,7 @@ export async function GET(request) {
       },
     });
   } catch (error) {
-    return new Response('{"error": "Failed to retrieve data."}', {
+    return new Response('{"error": "Failed to retrieve ."}', {
       status: 500,
       headers: {
         'Content-Type': 'application/json',
