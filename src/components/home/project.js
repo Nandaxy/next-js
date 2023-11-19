@@ -38,7 +38,7 @@ const Project = () => {
 
   return (
     <div id="project" className="h-full w-full bg-gray-100 dark:bg-dark dark:md:bg-black flex justify-center items-center pb-20">
-      <div className="text-center bg-white dark:bg-dark px-6 pt-6 pb-14 rounded-xl shadow-xl">
+      <div className="mt-40 text-center bg-white dark:bg-dark px-6 pt-6 pb-14 rounded-xl shadow-xl">
         <h1 className="font-bold text-3xl mb-4">Project</h1>
         <p className="mb-10">Beberapa project yang sudah pernah saya buat</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

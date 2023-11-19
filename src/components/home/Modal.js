@@ -3,7 +3,6 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGithub,
-  faArrowUpRightFromSquare,
 } from "@fortawesome/free-brands-svg-icons";
 
 const Modal = ({ onClose, project }) => {

@@ -4,7 +4,7 @@ import React from 'react';
 const About = () => {
   return (
     <section id='about' className="flex items-center justify-center h-full md:h-screen w-full bg-gray-100 dark:bg-black">
-      <div className="flex flex-col md:flex-row items-center max-w-4xl mx-auto p-10 shadow-lg rounded-lg md:bg-white bg-gray-100 dark:bg-dark dark:md:bg-dark">
+      <div className="mt-16 flex flex-col md:flex-row items-center max-w-4xl mx-auto p-10 shadow-lg rounded-lg md:bg-white bg-gray-100 dark:bg-dark dark:md:bg-dark">
         <div className="flex-shrink-0 mr-6">
             <Image src="/about.png" width={300} height={300}  alt='about' className='hidden md:block'></Image>
             <Image src="/about.png" width={250} height={250}  alt='about' className='mb-10 block md:hidden'></Image>
