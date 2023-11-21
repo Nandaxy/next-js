@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Blogs = () => {
+const Blog = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="text-center">
@@ -12,4 +12,4 @@ const Blogs = () => {
   );
 }
 
-export default Blogs;
+export default Blog;

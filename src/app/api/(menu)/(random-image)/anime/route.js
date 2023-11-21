@@ -4,9 +4,7 @@ import path from "path";
 import fs from "fs";
 
 const dataPath = path.resolve("data/anime.json");
-const databasePath = path.resolve("data/database.json");
 let data = JSON.parse(fs.readFileSync(dataPath, "utf-8"));
-let database = JSON.parse(fs.readFileSync(databasePath, "utf-8"));
 
 function getRandomImage(images) {
   const randomIndex = Math.floor(Math.random() * images.length);

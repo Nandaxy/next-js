@@ -1,5 +1,4 @@
-import Link from "next/link";
-import ApiTestComponent from "@/components/api/ApiTest";
+import TabelApi from "@/components/api/tabel";
 
 const AnimeReference = () => {
   return (
@@ -18,30 +17,7 @@ const AnimeReference = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="py-2 px-4 border-b text-left">Nijika</td>
-              <td className="py-2 px-4 border-b text-left">jpg/png</td>
-              <td className="py-2 px-4 border-b text-left">
-              <ApiTestComponent apiUrl="/api/anime?name=nijika" />
-              </td>
-              <td className="py-2 px-4 border-b text-left">
-                <Link href="/api/anime?name=nijika" className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
-                  GET
-                </Link>
-              </td>
-            </tr>
-            <tr>
-              <td className="py-2 px-4 border-b text-left">Ikuyo</td>
-              <td className="py-2 px-4 border-b text-left">jpg/png</td>
-              <td className="py-2 px-4 border-b text-left">
-              <ApiTestComponent apiUrl="/api/anime?name=ikuyo" />
-              </td>
-              <td className="py-2 px-4 border-b text-left">
-              <Link href="/api/anime?name=ikuyo" className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
-                  GET
-                </Link>
-              </td>
-            </tr>
+            <TabelApi />
           </tbody>
         </table>
       </div>
@@ -49,7 +25,7 @@ const AnimeReference = () => {
   );
 };
 export const metadata = {
-  title: 'API - Anime',
-  description: 'Explore a world of free APIs for your projects.',
-}
+  title: "API - Anime",
+  description: "Explore a world of free APIs for your projects.",
+};
 export default AnimeReference;

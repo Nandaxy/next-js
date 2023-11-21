@@ -2,6 +2,12 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCamera,
+  faDice,
+  faHammer,
+} from "@fortawesome/free-solid-svg-icons";
 import { usePathname } from "next/navigation";
 
 const Sidebar = () => {
@@ -13,6 +19,7 @@ const Sidebar = () => {
       "/api/mulai",
       "/api/quickstart",
       "/api/api-reference/anime",
+      "/api/api-reference/game",
     ];
 
     const newActiveLinks = activePaths.map((path) => ({
@@ -42,26 +49,40 @@ const Sidebar = () => {
             </LinkStyles>
           </div>
         </div>
+        <hr className="dark:opacity-30"></hr>
         <div className="my-4">
-          <h5 className="px-2 mb-1.5 font-semibold text-gray-900 dark:text-gray-200">
+          <h5 className="px-2 mb-1.5 font-semibold text-gray-900 dark:text-gray-200"><FontAwesomeIcon icon={faHammer} className="mr-2" />
             Test
           </h5>
-          <div className="flex flex-col">
+          <div className="flex flex-col pl-4">
             <LinkStyles link="/api/test" activeLinks={activeLinks}>
               <div className="text-sm">Testing</div>
             </LinkStyles>
           </div>
         </div>
         <div className="my-4">
-          <h5 className="px-2 mb-1.5 font-semibold text-gray-900 dark:text-gray-200">
+          <h5 className="px-2 mb-1.5 font-semibold text-gray-900 dark:text-gray-200"><FontAwesomeIcon icon={faCamera} className="mr-2" />
             Random Image
           </h5>
-          <div className="flex flex-col">
+          <div className="flex flex-col pl-4">
             <LinkStyles
               link="/api/api-reference/anime"
               activeLinks={activeLinks}
             >
               <div className="text-sm flex flex-warp">Anime</div>
+            </LinkStyles>
+          </div>
+        </div>
+        <div className="my-4">
+          <h5 className="px-2 mb-1.5 font-semibold text-gray-900 dark:text-gray-200"><FontAwesomeIcon icon={faDice} className="mr-2" />
+            Fun
+          </h5>
+          <div className="flex flex-col pl-4">
+            <LinkStyles
+              link="/api/api-reference/game"
+              activeLinks={activeLinks}
+            >
+              <div className="text-sm flex flex-warp">Game</div>
             </LinkStyles>
           </div>
         </div>

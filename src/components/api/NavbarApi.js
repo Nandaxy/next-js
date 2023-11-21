@@ -37,7 +37,7 @@ const NavbarApi = () => {
               />
             </svg>
           </button>
-          <Link href="/" className="text-xl font-bold md:block">
+          <Link href="/api" className="text-xl font-bold md:block">
             <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#da00ff] to-[#8000ff] block text-2xl">
               Nanda
             </span>
