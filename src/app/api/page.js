@@ -15,7 +15,7 @@ const PageApi = () => {
             Nanda API adalah platform REST API yang handal dan mudah digunakan.
             Dengan antarmuka yang intuitif, pengguna dapat mengakses dan
             mengintegrasikan berbagai sumber daya data dengan mudah. Keamanan
-            yang kuat dan skalabilitas membuat Shinoa API menjadi pilihan yang
+            yang kuat dan skalabilitas membuat Nanda API menjadi pilihan yang
             tepat untuk mengembangkan aplikasi yang terhubung dengan sistem
             lain.
           </p>
