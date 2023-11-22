@@ -1,4 +1,5 @@
 import TabelApi from "@/components/api/tabel";
+import NavPage from "@/components/navPage";
 
 const AnimeReference = () => {
   return (
@@ -21,6 +22,12 @@ const AnimeReference = () => {
           </tbody>
         </table>
       </div>
+      <NavPage
+        previousUrl="/api/quickstart"
+        previousName="Quicstart"
+        nextUrl="/api/api-reference/game"
+        nextName="Game"
+      />
     </div>
   );
 };

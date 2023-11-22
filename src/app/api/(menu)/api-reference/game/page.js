@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ApiTestComponent from "@/components/api/ApiTest";
+import NavPage from "@/components/navPage";
 
 const AnimeReference = () => {
   return (
@@ -24,7 +25,7 @@ const AnimeReference = () => {
               <td className="py-2 px-4 border-b text-left">Json</td>
               <td className="py-2 px-4 border-b text-left">?pics / ?index=1</td>
               <td className="py-2 px-4 border-b text-left">
-              <ApiTestComponent apiUrl="/api" />
+              <ApiTestComponent apiUrl="/api/game/tebak-gambar" />
               </td>
               <td className="py-2 px-4 border-b text-left">
                 <Link href="/api/game/tebak-gambar" className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
@@ -32,10 +33,41 @@ const AnimeReference = () => {
                 </Link>
               </td>
             </tr>
-          
+            <tr>
+              <td className="py-2 px-4 border-b text-left">Siapakah Aku</td>
+              <td className="py-2 px-4 border-b text-left">Json</td>
+              <td className="py-2 px-4 border-b text-left">?pics / ?index=1</td>
+              <td className="py-2 px-4 border-b text-left">
+              <ApiTestComponent apiUrl="/api/game/siapakah-aku" />
+              </td>
+              <td className="py-2 px-4 border-b text-left">
+                <Link href="/api/game/siapakah-aku" className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
+                  GET
+                </Link>
+              </td>
+            </tr>
+            <tr>
+              <td className="py-2 px-4 border-b text-left">Tebak bendera</td>
+              <td className="py-2 px-4 border-b text-left">Json</td>
+              <td className="py-2 px-4 border-b text-left">?pics</td>
+              <td className="py-2 px-4 border-b text-left">
+              <ApiTestComponent apiUrl="/api/game/tebak-bendera" />
+              </td>
+              <td className="py-2 px-4 border-b text-left">
+                <Link href="/api/game/tebak-bendera" className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">
+                  GET
+                </Link>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
+      <NavPage
+        previousUrl="/api/api-reference/anime"
+        previousName="Anime"
+        nextUrl=""
+        nextName=""
+      />
     </div>
   );
 };
