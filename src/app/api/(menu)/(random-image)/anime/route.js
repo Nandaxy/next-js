@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import fetch from "node-fetch";
 import path from "path";
 import fs from "fs";
