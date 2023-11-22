@@ -9,12 +9,10 @@ const DigitalClock = () => {
   useEffect(() => {
     setIsClient(true);
 
-    // Update the time every second
     const intervalId = setInterval(() => {
       setTime(getCurrentTime());
     }, 1000);
 
-    // Clean up the interval on component unmount
     return () => clearInterval(intervalId);
   }, []);
 

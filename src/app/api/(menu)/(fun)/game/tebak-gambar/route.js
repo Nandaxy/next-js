@@ -2,7 +2,7 @@ import fs from "fs";
 
 export async function GET(request) {
   try {
-    const jsonData = fs.readFileSync("data/game/tebakGambar.json", "utf-8");
+    const jsonData = fs.readFileSync('data/game/tebakGambar.json', "utf-8");
 
     const gameData = JSON.parse(jsonData);
 
