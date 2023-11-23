@@ -6,6 +6,7 @@ import {
   faEye,
   faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
+import CounterComponent from "@/components/tools/displayViews";
 
 const Dashboard = () => {
   return (
@@ -39,7 +40,7 @@ const Dashboard = () => {
             <div className="px-2 md:pt-3">
               <p className="text-white font-bold text-md">Views</p>
               <div className="mt-2">
-                <span className="mt-1 text-l font-bold text-white">0000000</span>
+                <span className="mt-1 text-l font-bold text-white"><CounterComponent/></span>
               </div>
             </div>
             <div>

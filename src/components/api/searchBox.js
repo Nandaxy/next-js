@@ -78,7 +78,7 @@ const SearchBox = () => {
         <div className="hidden md:block">
           <div
             onClick={handleSearchClick}
-            className="border-blue-50 dark:border-gray-900 border-2 flex justify-between w-80 p-2 rounded-md cursor-pointer"
+            className="border-blue-50 dark:border-gray-900 border-2 flex justify-between w-96 p-2 rounded-md cursor-pointer"
           >
             <div className="flex items-center justify-center">
               <svg
@@ -101,7 +101,7 @@ const SearchBox = () => {
           </div>
         </div>
         {isOpen && (
-          <div className="fixed inset-0 bg-gray-900 justify-center flex backdrop-blur-md">
+          <div className="fixed inset-0 bg-gray-900 justify-center flex">
             <div className="flex flex-col">
               <div
                 className={`z-[99999] flex mt-10 md:mt-36 px-4 py-6 items-center ${
@@ -111,7 +111,7 @@ const SearchBox = () => {
                 } max-w-full modal-container`}
               >
                 <div className="items-center flex">
-                  {/* ... (bagian lain dari komponen) */}
+              
                   <input
                     ref={inputRef}
                     type="text"

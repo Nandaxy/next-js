@@ -28,11 +28,11 @@ const DigitalClock = () => {
   const getGreeting = () => {
     const currentHour = new Date().getHours();
     if (currentHour < 12) {
-      return 'Good morning!';
+      return 'Selamat pagi!';
     } else if (currentHour < 18) {
-      return 'Good afternoon!';
+      return 'Selamat sore!';
     } else {
-      return 'Good evening!';
+      return 'Selamat malam!';
     }
   };
 
