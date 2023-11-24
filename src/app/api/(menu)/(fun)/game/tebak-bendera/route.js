@@ -9,22 +9,35 @@ export async function GET(request) {
   const queryParams = new URL(request.url).searchParams;
   const includeRandom = queryParams.get("pics");
 
+  let response;
+
   if (includeRandom !== null) {
     const randomIndex = Math.floor(Math.random() * jsonData.length);
     const randomGame = jsonData[randomIndex];
 
     if (randomGame) {
-      return new NextResponse(JSON.stringify(randomGame), {
+      response = new NextResponse(JSON.stringify(randomGame), {
         headers: {
           "Content-Type": "application/json",
         },
       });
     }
   } else {
-    return new NextResponse(JSON.stringify(jsonData), {
+    response = new NextResponse(JSON.stringify(jsonData), {
       headers: {
         "Content-Type": "application/json",
       },
     });
   }
+
+ 
+  if (response && response.status === 200) {
+    try {
+      await fetch('https://counter.nandaxy.repl.co/add/game?game=tebakbendera');
+    } catch (error) {
+      // console.error('Error fetching counter data:', error);
+    }
+  }
+
+  return response;
 }

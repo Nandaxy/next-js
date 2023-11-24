@@ -40,7 +40,7 @@ const Dashboard = () => {
             <div className="px-2 md:pt-3">
               <p className="text-white font-bold text-md">Views</p>
               <div className="mt-2">
-                <span className="mt-1 text-l font-bold text-white"><CounterComponent/></span>
+                <span className="mt-1 text-l font-bold text-white"><CounterComponent dataType="views"/></span>
               </div>
             </div>
             <div>
@@ -54,7 +54,7 @@ const Dashboard = () => {
             <div className="px-2 md:pt-3">
               <p className="text-white font-bold text-md">Total Request</p>
               <div className="mt-2">
-                <span className="mt-1 text-l font-bold text-white">000000</span>
+                <span className="mt-1 text-l font-bold text-white"><CounterComponent dataType="totalRequests" /></span>
               </div>
             </div>
             <div>

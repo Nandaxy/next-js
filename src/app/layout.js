@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./Providers";
-import AddViews from "@/components/tools/addViews";
+import AddData from "@/components/tools/addData";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AddViews/>
+        <AddData apiUrl="https://counter.nandaxy.repl.co/add" />
         <Providers>{children}</Providers>
       </body>
     </html>

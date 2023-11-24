@@ -2,20 +2,35 @@
 
 import { useState, useEffect } from 'react';
 
-const CounterComponent = () => {
-  const [views, setViews] = useState(null);
+const CounterComponent = ({ dataType }) => {
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch('https://counter.nandaxy.repl.co/data');
-        const data = await response.json();
+        const responseData = await response.json();
 
-        if (data && data.views !== undefined) {
-          const integerViews = parseInt(data.views, 10);
-          setViews(integerViews);
+        if (responseData) {
+          switch (dataType) {
+            case 'totalRequests':
+              setData(responseData.totalRequests);
+              break;
+            case 'randomImage':
+              setData(responseData.counter.randomImage);
+              break;
+            case 'game':
+              setData(responseData.counter.game);
+              break;
+            case 'views':
+              setData(Math.floor(responseData.views));
+              break;
+            default:
+              console.error('Invalid dataType:', dataType);
+              break;
+          }
         } else {
-          console.error('Invalid data structure:', data);
+          console.error('Invalid data structure:', responseData);
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -23,12 +38,12 @@ const CounterComponent = () => {
     };
 
     fetchData();
-  }, []);
+  }, [dataType]);
 
   return (
     <div>
-      {views !== null ? (
-        <p>{views}</p>
+      {data !== null ? (
+        <p>{data}</p>
       ) : (
         <p>Loading...</p>
       )}
@@ -37,4 +52,5 @@ const CounterComponent = () => {
 };
 
 export default CounterComponent;
+
 

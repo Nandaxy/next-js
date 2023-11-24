@@ -33,6 +33,12 @@ export async function GET(request) {
       const imageResponse = await fetch(randomImage);
       const imageBuffer = await imageResponse.buffer();
 
+      try {
+        await fetch(`https://counter.nandaxy.repl.co/add/random/anime?name=${encodeURIComponent(name)}`);
+      } catch (error) {
+        console.error('Error fetching counter data:', error);
+      }
+
       return new NextResponse(imageBuffer, {
         headers: {
           "Content-Type": imageResponse.headers.get("Content-Type"),
