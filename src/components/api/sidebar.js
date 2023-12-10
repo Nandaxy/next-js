@@ -4,9 +4,11 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faRobot,
+  faDownload,
   faCamera,
-  faDice,
-  faHammer,
+  faMoon,
+  faFaceSmile,
 } from "@fortawesome/free-solid-svg-icons";
 import { usePathname } from "next/navigation";
 
@@ -18,8 +20,11 @@ const Sidebar = () => {
     const activePaths = [
       "/api/mulai",
       "/api/quickstart",
-      "/api/api-reference/anime",
-      "/api/api-reference/game",
+      "/api/api-reference/random-image",
+      "/api/api-reference/ai",
+      "/api/api-reference/entertainment",
+      "/api/api-reference/downloader",
+      "/api/api-reference/islami",
     ];
 
     const newActiveLinks = activePaths.map((path) => ({
@@ -50,39 +55,67 @@ const Sidebar = () => {
           </div>
         </div>
         <hr className="dark:opacity-30"></hr>
-        <div className="my-4">
-          <h5 className="px-2 mb-1.5 font-semibold text-gray-900 dark:text-gray-200"><FontAwesomeIcon icon={faHammer} className="mr-2" />
-            Test
-          </h5>
-          <div className="flex flex-col pl-4">
-            <LinkStyles link="/api/test" activeLinks={activeLinks}>
-              <div className="text-sm">Testing</div>
+
+        <div className="mt-4">
+          <div className="flex flex-col">
+            <LinkStyles link="/api/api-reference/ai" activeLinks={activeLinks}>
+              <div className="text-sm flex flex-warp">
+                <FontAwesomeIcon icon={faRobot} className="m-auto mr-2" />
+                OpenAI
+              </div>
             </LinkStyles>
           </div>
         </div>
-        <div className="my-4">
-          <h5 className="px-2 mb-1.5 font-semibold text-gray-900 dark:text-gray-200"><FontAwesomeIcon icon={faCamera} className="mr-2" />
-            Random Image
-          </h5>
-          <div className="flex flex-col pl-4">
+        <div className="">
+          <div className="flex flex-col">
             <LinkStyles
-              link="/api/api-reference/anime"
+              link="/api/api-reference/downloader"
               activeLinks={activeLinks}
             >
-              <div className="text-sm flex flex-warp">Anime</div>
+              <div className="text-sm flex flex-warp">
+                <FontAwesomeIcon icon={faDownload} className="m-auto mr-2" />
+                Downloader
+              </div>
             </LinkStyles>
           </div>
         </div>
-        <div className="my-4">
-          <h5 className="px-2 mb-1.5 font-semibold text-gray-900 dark:text-gray-200"><FontAwesomeIcon icon={faDice} className="mr-2" />
-            Fun
-          </h5>
-          <div className="flex flex-col pl-4">
+        <div className="">
+          <div className="flex flex-col">
             <LinkStyles
-              link="/api/api-reference/game"
+              link="/api/api-reference/islami"
               activeLinks={activeLinks}
             >
-              <div className="text-sm flex flex-warp">Game</div>
+              <div className="text-sm flex flex-warp">
+                <FontAwesomeIcon icon={faMoon} className="m-auto mr-2" />
+                Islami
+              </div>
+            </LinkStyles>
+          </div>
+        </div>
+        <div className="">
+          <div className="flex flex-col">
+            <LinkStyles
+              link="/api/api-reference/random-image"
+              activeLinks={activeLinks}
+            >
+              <div className="text-sm flex flex-warp">
+                <FontAwesomeIcon icon={faCamera} className="m-auto mr-2" />
+                Random Image
+              </div>
+            </LinkStyles>
+          </div>
+        </div>
+
+        <div className="">
+          <div className="flex flex-col">
+            <LinkStyles
+              link="/api/api-reference/entertainment"
+              activeLinks={activeLinks}
+            >
+              <div className="text-sm flex flex-warp">
+                <FontAwesomeIcon icon={faFaceSmile} className="m-auto mr-2" />
+                Enterteiment
+              </div>
             </LinkStyles>
           </div>
         </div>

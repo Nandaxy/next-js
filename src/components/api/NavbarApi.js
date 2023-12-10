@@ -26,7 +26,6 @@ const NavbarApi = () => {
   const closeMenu = () => {
     setIsOpen(false);
   };
-  // dropdown Navbar monile
   // get started
   const [isDropdownOpenGet, setIsDropdownOpenGet] = useState(
     pathname.includes("/api/mulai") || pathname.includes("/api/quickstart")
@@ -35,23 +34,8 @@ const NavbarApi = () => {
   const getdropGet = () => {
     setIsDropdownOpenGet(!isDropdownOpenGet);
   };
-  // fun
-  const [isDropdownOpenFun, setIsDropdownOpenFun] = useState(
-    pathname.includes("/api/api-reference/game")
-  );
 
-  const getdropFun = () => {
-    setIsDropdownOpenFun(!isDropdownOpenFun);
-  };
 
-  // anime
-  const [isDropdownOpenRandom, setIsDropdownOpenRandom] = useState(
-    pathname.includes("/api/api-reference/anime")
-  );
-
-  const getdropRandom = () => {
-    setIsDropdownOpenRandom(!isDropdownOpenRandom);
-  };
   return (
     <>
       <div className="fixed top-0 left-0 w-full opacity-90 z-10">
@@ -63,7 +47,7 @@ const NavbarApi = () => {
             >
               <FontAwesomeIcon icon={faBars} className="text-2xl m-auto" />
             </button>
-            <Link href="/api" className="text-xl font-bold md:block">
+            <Link href="/api" className="text-xl font-bold md:block m-auto">
               <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#da00ff] to-[#8000ff] block text-2xl">
                 Nanda
               </span>
@@ -127,7 +111,7 @@ const NavbarApi = () => {
         <div className="flex items-center space-x-2 mb-4">
           <span className="text-2xl font-bold text-purple-600">Nanda</span>
         </div>
-        <hr class="h-px bg-gray-200 border-0 dark:bg-gray-900"></hr>
+        <hr className="h-px bg-gray-200 border-0 dark:bg-gray-900"></hr>
         <div className="pt-4">
           <p
             className={`font-bold hover:bg-gray-200 dark:hover:bg-gray-900 rounded-md p-2 cursor-pointer ${
@@ -175,81 +159,14 @@ const NavbarApi = () => {
             </div>
           )}
         </div>
-        {/* Random */}
-        <div className="pt-4">
-          <p
-            className={`font-bold hover:bg-gray-200 dark:hover:bg-gray-900 rounded-md p-2 cursor-pointer ${
-              isDropdownOpenRandom ? "bg-gray-50 dark:bg-[#141414]" : ""
-            }`}
-            onClick={getdropRandom}
-          >
-            <FontAwesomeIcon icon={faCamera} className="mr-2" />
-            Random Image{" "}
-            <FontAwesomeIcon
-              icon={faCaretDown}
-              className={`ml-2 transition-transform ${
-                isDropdownOpenRandom ? "transform rotate-180" : ""
-              }`}
-            />
-          </p>
-          {isDropdownOpenRandom && (
-            <div className="pl-6 ">
-              <div className="bg-gray-50 dark:bg-[#141414] p-2 rounded-b-lg">
-                {/* Dropdown items */}
-                <Link href="/api/api-reference/anime" onClick={closeMenu}>
-                  <div
-                    className={`mb-2 pl-2 py-2 ${
-                      pathname === "/api/api-reference/anime"
-                        ? "font-bold text-darkPrimary bg-Primary bg-gray-200 rounded-lg dark:bg-[#0c0c0c] "
-                        : "hover:bg-gray-200 dark:hover:bg-gray-900"
-                    }`}
-                  >
-                    <span>Anime</span>
-                  </div>
-                </Link>
-              </div>
-            </div>
-          )}
-        </div>
-        {/* fun menu */}
-        <div className="pt-4">
-          <p
-            className={`font-bold hover:bg-gray-200 dark:hover:bg-gray-900 rounded-md p-2 cursor-pointer ${
-              isDropdownOpenFun ? "bg-gray-50 dark:bg-[#141414]" : ""
-            }`}
-            onClick={getdropFun}
-          >
-            <FontAwesomeIcon icon={faDice} className="mr-2" />
-            Fun{" "}
-            <FontAwesomeIcon
-              icon={faCaretDown}
-              className={`ml-2 transition-transform ${
-                isDropdownOpenFun ? "transform rotate-180" : ""
-              }`}
-            />
-          </p>
-          {isDropdownOpenFun && (
-            <div className="pl-6 ">
-              <div className="bg-gray-50 dark:bg-[#141414] p-2 rounded-b-lg">
-                {/* Dropdown items */}
-                <Link href="/api/api-reference/game" onClick={closeMenu}>
-                  <div
-                    className={`mb-2 pl-2 py-2 ${
-                      pathname === "/api/api-reference/game"
-                        ? "font-bold text-darkPrimary bg-Primary bg-gray-200 rounded-lg dark:bg-[#0c0c0c] "
-                        : "hover:bg-gray-200 dark:hover:bg-gray-900"
-                    }`}
-                  >
-                    <span>Game</span>
-                  </div>
-                </Link>
-              </div>
-            </div>
-          )}
-        </div>
+        <hr></hr>
+
       </div>
     </>
+
+    
   );
 };
+
 
 export default NavbarApi;

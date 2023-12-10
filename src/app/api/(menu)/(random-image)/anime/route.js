@@ -30,20 +30,42 @@ export async function GET(request) {
         });
       }
 
-      const imageResponse = await fetch(randomImage);
-      const imageBuffer = await imageResponse.buffer();
-
       try {
-        await fetch(`https://counter.nandaxy.repl.co/add/random/anime?name=${encodeURIComponent(name)}`);
-      } catch (error) {
-        console.error('Error fetching counter data:', error);
-      }
+        const imageResponse = await fetch(randomImage);
 
-      return new NextResponse(imageBuffer, {
-        headers: {
-          "Content-Type": imageResponse.headers.get("Content-Type"),
-        },
-      });
+        if (!imageResponse.ok) {
+
+          return NextResponse.json({
+            status: 500,
+            message: "Internal Server Error",
+            data: null,
+          });
+        }
+
+        const imageBuffer = await imageResponse.buffer();
+
+        try {
+
+          await fetch(`https://counter.nandaxy.repl.co/add/random/anime?name=${encodeURIComponent(name)}`);
+        } catch (error) {
+        
+          console.error('Error fetching counter data:', error);
+        }
+
+        return new NextResponse(imageBuffer, {
+          headers: {
+            "Content-Type": imageResponse.headers.get("Content-Type"),
+          },
+        });
+      } catch (error) {
+       
+        console.error('Error fetching image:', error);
+        return NextResponse.json({
+          status: 500,
+          message: "Internal Server Error",
+          data: null,
+        });
+      }
     }
 
     return NextResponse.json({ status: 404, message: "Not Found", data: null });

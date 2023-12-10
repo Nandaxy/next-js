@@ -14,16 +14,16 @@ const CounterComponent = ({ dataType }) => {
         if (responseData) {
           switch (dataType) {
             case 'totalRequests':
-              setData(responseData.totalRequests);
+              setData(responseData.totalRequests.toLocaleString());
               break;
             case 'randomImage':
-              setData(responseData.counter.randomImage);
+              setData(responseData.counter.randomImage.toLocaleString());
               break;
             case 'game':
-              setData(responseData.counter.game);
+              setData(responseData.counter.game.toLocaleString());
               break;
             case 'views':
-              setData(Math.floor(responseData.views));
+              setData(Math.floor(responseData.views).toLocaleString());
               break;
             default:
               console.error('Invalid dataType:', dataType);
@@ -52,5 +52,6 @@ const CounterComponent = ({ dataType }) => {
 };
 
 export default CounterComponent;
+
 
 
