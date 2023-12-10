@@ -10,7 +10,7 @@ export async function GET(request) {
     const queryParams = new URL(request.url).searchParams;
     const searchQuery = queryParams.get("search");
     const doaId = queryParams.get("id");
-    const isRandom = queryParams.get("random");
+    const isRandom = queryParams.get("pics");
 
     if (searchQuery) {
       const matchedDoa = jsonData.find(item => item.doa.toLowerCase().includes(searchQuery.toLowerCase()));

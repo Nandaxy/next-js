@@ -66,7 +66,7 @@ const AIReference = () => {
                 Get audio surah from Al Quran
               </td>
               <td className="py-2 px-4 border-b dark:border-[#2c2c2c] text-sm text-left">
-                id / surah
+                id/surah
               </td>
               <td className="py-2 px-4 border-b dark:border-[#2c2c2c] text-sm text-left">
                 <Status />
@@ -74,6 +74,37 @@ const AIReference = () => {
               <td className="py-2 px-4 border-b dark:border-[#2c2c2c] text-sm text-center">
                 <Link
                   href="/api/islamic/surah-audio?id="
+                  className="w-full block p-2 rounded-lg"
+                >
+                  <div className=" rounded-lg">
+                    <PlayIcon />
+                  </div>
+                </Link>
+              </td>
+            </tr>
+
+            <tr className="hover:bg-gray-100 dark:hover:bg-[#161616] dark:border-[#2c2c2c]">
+              <td className="py-2 px-4 border-b dark:border-[#2c2c2c] text-sm text-center">
+                2
+              </td>
+              <td className="py-2 px-4 border-b dark:border-[#2c2c2c] text-sm text-left whitespace-nowrap">
+                Doa Doa
+              </td>
+              <td className="py-2 px-4 border-b dark:border-[#2c2c2c] text-sm text-left">
+                <GetButton />
+              </td>
+              <td className="py-2 px-4 border-b dark:border-[#2c2c2c] text-sm text-left whitespace-nowrap">
+              Get daily prayers
+              </td>
+              <td className="py-2 px-4 border-b dark:border-[#2c2c2c] text-sm text-left">
+                id/search/pics
+              </td>
+              <td className="py-2 px-4 border-b dark:border-[#2c2c2c] text-sm text-left">
+                <Status />
+              </td>
+              <td className="py-2 px-4 border-b dark:border-[#2c2c2c] text-sm text-center">
+                <Link
+                  href="/api/islamic/doa?search=makan"
                   className="w-full block p-2 rounded-lg"
                 >
                   <div className=" rounded-lg">
