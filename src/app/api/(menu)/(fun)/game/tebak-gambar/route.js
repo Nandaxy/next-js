@@ -54,10 +54,8 @@ export async function GET(request) {
 
   if (response && response.status === 200) {
     try {
-      await fetch('https://counter.nandaxy.repl.co/add/game?game=tebakgambar');
-    } catch (error) {
-      // console.error('Error fetching counter data:', error);
-    }
+      await fetch(`https://counter.nandaxy.repl.co/hit`);
+    } catch (error) {}
   }
 
   return response;

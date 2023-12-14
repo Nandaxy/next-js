@@ -47,6 +47,10 @@ export async function GET(request) {
 
     const audioBuffer = await fetch(audioUrl).then((res) => res.buffer());
 
+    try {
+      await fetch(`https://counter.nandaxy.repl.co/hit`);
+    } catch (error) {}
+
     return new NextResponse(audioBuffer, {
       headers: {
         "Access-Control-Allow-Origin": "*",

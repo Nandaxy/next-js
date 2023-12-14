@@ -16,12 +16,6 @@ const CounterComponent = ({ dataType }) => {
             case 'totalRequests':
               setData(responseData.totalRequests.toLocaleString());
               break;
-            case 'randomImage':
-              setData(responseData.counter.randomImage.toLocaleString());
-              break;
-            case 'game':
-              setData(responseData.counter.game.toLocaleString());
-              break;
             case 'views':
               setData(Math.floor(responseData.views).toLocaleString());
               break;

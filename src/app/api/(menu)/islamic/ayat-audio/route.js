@@ -13,39 +13,60 @@ export async function GET(request) {
           status: false,
           message: "Both 'id' or 'surat' and 'ayat' parameters are required",
           example: "?id=1&ayat=1 or ?surat=Al-Fatihah&ayat=1",
-          author: "Nanda"
+          author: "Nanda",
         }),
         { status: 400 }
       );
     }
 
-    const surahData = quranData.find((surah) => surah.number === parseInt(surahId, 10) || surah.name.toLowerCase() === surahId.toLowerCase());
+    const surahData = quranData.find(
+      (surah) =>
+        surah.number === parseInt(surahId, 10) ||
+        surah.name.toLowerCase() === surahId.toLowerCase()
+    );
 
     if (!surahData) {
       return new NextResponse(
-        JSON.stringify({ status: false, message: "Surah not found", author: "Nanda" }),
+        JSON.stringify({
+          status: false,
+          message: "Surah not found",
+          author: "Nanda",
+        }),
         { status: 404 }
       );
     }
 
-    const ayatData = surahData.ayahs.find((ayah) => ayah.number.inSurah === parseInt(ayatNumber, 10));
+    const ayatData = surahData.ayahs.find(
+      (ayah) => ayah.number.inSurah === parseInt(ayatNumber, 10)
+    );
 
     if (!ayatData) {
       return new NextResponse(
-        JSON.stringify({ status: false, message: "Ayat not found in the specified Surah", author: "Nanda" }),
+        JSON.stringify({
+          status: false,
+          message: "Ayat not found in the specified Surah",
+          author: "Nanda",
+        }),
         { status: 404 }
       );
     }
 
-    const audioUrl = ayatData.audio.alafasy; 
+    const audioUrl = ayatData.audio.alafasy;
 
+    try {
+      await fetch(`https://counter.nandaxy.repl.co/hit`);
+    } catch (error) {}
+    
     return new NextResponse(null, {
       status: 302,
       headers: {
         "Access-Control-Allow-Origin": "*",
         "Content-Type": "audio/mp3",
-        "Content-Disposition": `attachment; filename=${surahData.name.replace(" ", "-")}-Ayat-${ayatData.number.inSurah}.mp3`,
-        "Location": audioUrl,
+        "Content-Disposition": `attachment; filename=${surahData.name.replace(
+          " ",
+          "-"
+        )}-Ayat-${ayatData.number.inSurah}.mp3`,
+        Location: audioUrl,
       },
     });
   } catch (error) {
@@ -54,7 +75,10 @@ export async function GET(request) {
       JSON.stringify({
         status: 500,
         author: "Nanda",
-        result: { error: "Internal server error", message: "Yo ndak tau ko tanaya saya" },
+        result: {
+          error: "Internal server error",
+          message: "Yo ndak tau ko tanaya saya",
+        },
       }),
       { status: 500 }
     );

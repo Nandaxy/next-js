@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import fetch from "node-fetch";
 
 export async function GET(request) {
   try {
@@ -8,25 +9,32 @@ export async function GET(request) {
     const jsonData = JSON.parse(fs.readFileSync(dataPath, "utf-8"));
 
     const queryParams = new URL(request.url).searchParams;
-    const searchQuery = queryParams.get("search");
+    const searchQuery = queryParams.get("query");
     const doaId = queryParams.get("id");
     const isRandom = queryParams.get("pics");
 
+    let response;
+
     if (searchQuery) {
-      const matchedDoa = jsonData.find(item => item.doa.toLowerCase().includes(searchQuery.toLowerCase()));
+      const matchedDoa = jsonData.find((item) =>
+        item.doa.toLowerCase().includes(searchQuery.toLowerCase())
+      );
 
       if (matchedDoa) {
-        return new NextResponse(JSON.stringify({
-          status: 200,
-          author: "Nanda",
-          result: matchedDoa,
-        }), {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        response = new NextResponse(
+          JSON.stringify({
+            status: 200,
+            author: "Nanda",
+            result: matchedDoa,
+          }),
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
       } else {
-        return new NextResponse(
+        response = new NextResponse(
           JSON.stringify({
             status: 404,
             author: "Nanda",
@@ -41,33 +49,39 @@ export async function GET(request) {
       const randomIndex = Math.floor(Math.random() * jsonData.length);
       const randomDoa = jsonData[randomIndex];
 
-      return new NextResponse(JSON.stringify({
-        status: 200,
-        author: "Nanda",
-        result: randomDoa,
-      }), {
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      response = new NextResponse(
+        JSON.stringify({
+          status: 200,
+          author: "Nanda",
+          result: randomDoa,
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
     }
 
     if (doaId) {
-      const doa = jsonData.find(item => item.id === doaId);
+      const doa = jsonData.find((item) => item.id === doaId);
 
       if (doa) {
-        return new NextResponse(JSON.stringify({
-          status: 200,
-          author: "Nanda",
-          result: doa,
-        }), {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        response = new NextResponse(
+          JSON.stringify({
+            status: 200,
+            author: "Nanda",
+            result: doa,
+          }),
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
       } else {
-        return new NextResponse(
+        response = new NextResponse(
           JSON.stringify({
             status: 404,
             author: "Nanda",
@@ -78,15 +92,26 @@ export async function GET(request) {
       }
     }
 
-    return new NextResponse(JSON.stringify({
-      status: 200,
-      author: "Nanda",
-      result: jsonData,
-    }), {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    if (!response) {
+      response = new NextResponse(
+        JSON.stringify({
+          status: 200,
+          author: "Nanda",
+          result: jsonData,
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    }
+
+    try {
+      await fetch(`https://counter.nandaxy.repl.co/hit`);
+    } catch (error) {}
+
+    return response;
   } catch (error) {
     console.error("Error reading doa.json:", error);
     return new NextResponse(

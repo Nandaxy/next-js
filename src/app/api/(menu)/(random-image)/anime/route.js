@@ -19,7 +19,6 @@ export async function GET(request) {
     const detail = data.find((item) => item.name === name);
 
     if (detail) {
-      
       const randomImage = getRandomImage(detail.images);
 
       if (!randomImage.startsWith("http")) {
@@ -34,7 +33,6 @@ export async function GET(request) {
         const imageResponse = await fetch(randomImage);
 
         if (!imageResponse.ok) {
-
           return NextResponse.json({
             status: 500,
             message: "Internal Server Error",
@@ -45,12 +43,8 @@ export async function GET(request) {
         const imageBuffer = await imageResponse.buffer();
 
         try {
-
-          await fetch(`https://counter.nandaxy.repl.co/add/random/anime?name=${encodeURIComponent(name)}`);
-        } catch (error) {
-        
-          console.error('Error fetching counter data:', error);
-        }
+          await fetch(`https://counter.nandaxy.repl.co/hit`);
+        } catch (error) {}
 
         return new NextResponse(imageBuffer, {
           headers: {
@@ -58,8 +52,7 @@ export async function GET(request) {
           },
         });
       } catch (error) {
-       
-        console.error('Error fetching image:', error);
+        console.error("Error fetching image:", error);
         return NextResponse.json({
           status: 500,
           message: "Internal Server Error",

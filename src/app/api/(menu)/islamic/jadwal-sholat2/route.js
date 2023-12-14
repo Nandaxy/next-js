@@ -23,51 +23,34 @@ export async function GET(request) {
     const response = await fetch(apiUrl);
 
     if (response.ok) {
+      try {
+        await fetch(`https://counter.nandaxy.repl.co/hit`);
+      } catch (error) {}
+
       const data = await response.json();
 
-      const todayDate = new Date().toISOString().split("T")[0];
-      const todaySchedule = data.find(
-        (schedule) => schedule.tanggal === todayDate
+      return new NextResponse(
+        JSON.stringify({
+          status: 200,
+          author: "Nanda",
+          result: {
+            kota: cityName,
+            jadwal: data,
+          },
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
       );
-
-      if (todaySchedule) {
-        try {
-          await fetch(`https://counter.nandaxy.repl.co/hit`);
-        } catch (error) {}
-        return new NextResponse(
-          JSON.stringify({
-            status: 200,
-            author: "Nanda",
-            result: [
-              {
-                kota: cityName,
-                ...todaySchedule,
-              },
-            ],
-          }),
-          {
-            headers: {
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*",
-            },
-          }
-        );
-      } else {
-        return new NextResponse(
-          JSON.stringify({
-            status: 404,
-            author: "Nanda",
-            message: "Jadwal sholat not found for today",
-          }),
-          { status: 404 }
-        );
-      }
     } else {
       return new NextResponse(
         JSON.stringify({
           status: response.status,
           author: "Nanda",
-          message: "Kota tidak di temukan",
+          message: "Kota tidak ditemukan",
         }),
         { status: response.status }
       );

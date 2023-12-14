@@ -49,6 +49,7 @@ export async function GET(request) {
       status: false,
       creator: "Nanda",
       message: "Internal server Erorr!",
+      error: error.message,
     });
   }
 }
