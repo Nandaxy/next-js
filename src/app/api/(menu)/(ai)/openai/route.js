@@ -1,6 +1,18 @@
 import { NextResponse } from "next/server";
 import fetch from "node-fetch";
 
+async function fetchData(text) {
+  const apiUrl = `https://aemt.me/openai?text=${text}`;
+  const response = await fetch(apiUrl);
+
+  if (!response.ok) {
+    throw new Error("Error fetching data from openai");
+  }
+
+  const data = await response.json();
+  return data.result;
+}
+
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -15,26 +27,14 @@ export async function GET(request) {
       });
     }
 
-    const apiUrl = `https://aemt.me/openai?text=${text}`;
-    const response = await fetch(apiUrl);
-
-    if (!response.ok) {
-      return NextResponse.json({
-        code: 400,
-        status: false,
-        creator: "Nanda",
-        message: "eror! tdak dapat fetch openai",
-      });
-    }
-
-    const data = await response.json();
+    const result = await fetchData(text);
 
     return new NextResponse(
       JSON.stringify({
-        status: response.status,
+        status: 200,
         message: "Success",
         creator: "Nanda",
-        result: data.result,
+        result: result,
       }),
       {
         headers: {
@@ -44,6 +44,7 @@ export async function GET(request) {
     );
   } catch (error) {
     console.error("Error fetching data:", error);
+
     return NextResponse.json({
       status: 500,
       status: false,

@@ -11,7 +11,7 @@ const AIReference = () => {
 
   return (
     <div className="pr-8">
-      <h2 className="text-apiPrimary font-bold text-xl">OpenAI</h2>
+      <h2 className="text-apiPrimary font-bold text-2xl">OpenAI</h2>
       <div className="mt-10 w-full overflow-x-auto lg:overflow-x-hidden">
         <table className="min-w-full bg-white dark:bg-dark border dark:border-[#2c2c2c] rounded-lg">
           <TabelHead />
@@ -55,8 +55,8 @@ const AIReference = () => {
         </table>
       </div>
       <NavPage
-        previousUrl="/api/quickstart"
-        previousName="Quicstart"
+        previousUrl="/api/api-reference/all"
+        previousName="All Feature"
         nextUrl="/api/api-reference/downloader"
         nextName="Downloader"
       />

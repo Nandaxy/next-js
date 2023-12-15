@@ -16,7 +16,7 @@ const IslamicReference = () => {
   );
   return (
     <div className="pr-8">
-      <h2 className="text-apiPrimary font-bold text-xl">Islami</h2>
+      <h2 className="text-apiPrimary font-bold text-2xl">Islami</h2>
       <div className="mt-10 w-full overflow-x-auto ">
         <table className="min-w-full bg-white dark:bg-dark border dark:border-[#2c2c2c] rounded-lg">
           <TabelHead />

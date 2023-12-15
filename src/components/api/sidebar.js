@@ -9,6 +9,8 @@ import {
   faCamera,
   faMoon,
   faFaceSmile,
+  faBars,
+  faNewspaper,
 } from "@fortawesome/free-solid-svg-icons";
 import { usePathname } from "next/navigation";
 
@@ -25,6 +27,8 @@ const Sidebar = () => {
       "/api/api-reference/entertainment",
       "/api/api-reference/downloader",
       "/api/api-reference/islami",
+      "/api/api-reference/all",
+      "/api/api-reference/news",
     ];
 
     const newActiveLinks = activePaths.map((path) => ({
@@ -57,6 +61,17 @@ const Sidebar = () => {
         <hr className="dark:opacity-30"></hr>
 
         <div className="mt-4">
+          <div className="flex flex-col">
+            <LinkStyles link="/api/api-reference/all" activeLinks={activeLinks}>
+              <div className="text-sm flex flex-warp">
+                <FontAwesomeIcon icon={faBars} className="m-auto mr-2" />
+                All Feature
+              </div>
+            </LinkStyles>
+          </div>
+        </div>
+
+        <div className="">
           <div className="flex flex-col">
             <LinkStyles link="/api/api-reference/ai" activeLinks={activeLinks}>
               <div className="text-sm flex flex-warp">
@@ -118,9 +133,23 @@ const Sidebar = () => {
               </div>
             </LinkStyles>
           </div>
-
-          
         </div>
+
+
+        <div className="">
+          <div className="flex flex-col">
+            <LinkStyles
+              link="/api/api-reference/news"
+              activeLinks={activeLinks}
+            >
+              <div className="text-sm flex flex-warp">
+                <FontAwesomeIcon icon={faNewspaper} className="m-auto mr-2" />
+                News
+              </div>
+            </LinkStyles>
+          </div>
+        </div>
+
       </div>
     </div>
   );

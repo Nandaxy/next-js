@@ -29,7 +29,7 @@ const Quickstart = () => {
           <ul className="list-disc">
             <li>Kirim permintaan GET ke endpoint di atas.</li>
             <li>Dapatkan respons berupa gambar karakter anime acak setiap kali Anda melakukan panggilan</li>
-            <li>parameter <i>name</i> bisa dilihat di <Link href="/api/api-reference/anime" className="text-darkPrimary font-bold">Sini</Link></li>
+            <li>parameter <i>name</i> bisa dilihat di <Link href="/api/api-reference/random-image" className="text-darkPrimary font-bold">Sini</Link></li>
           </ul> 
         </div>
       </div>

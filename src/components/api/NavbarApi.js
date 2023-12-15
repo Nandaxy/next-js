@@ -11,13 +11,18 @@ import {
   faX,
   faHouse,
   faCaretDown,
-  faCamera,
-  faDice,
 } from "@fortawesome/free-solid-svg-icons";
+import NavbarApiMobile from "./NavbarApiMobile";
 
 const NavbarApi = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+
+  const targetPaths = ["/api/mulai", "/api/quickstart"];
+
+  const isTargetPath = targetPaths.includes(pathname);
+
+  const href = isTargetPath ? "/api" : "#";
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -26,7 +31,7 @@ const NavbarApi = () => {
   const closeMenu = () => {
     setIsOpen(false);
   };
-  // get started
+
   const [isDropdownOpenGet, setIsDropdownOpenGet] = useState(
     pathname.includes("/api/mulai") || pathname.includes("/api/quickstart")
   );
@@ -34,7 +39,6 @@ const NavbarApi = () => {
   const getdropGet = () => {
     setIsDropdownOpenGet(!isDropdownOpenGet);
   };
-
 
   return (
     <>
@@ -47,7 +51,7 @@ const NavbarApi = () => {
             >
               <FontAwesomeIcon icon={faBars} className="text-2xl m-auto" />
             </button>
-            <Link href="/api" className="text-xl font-bold md:block m-auto">
+            <Link href={href} className="text-xl font-bold md:block m-auto">
               <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#da00ff] to-[#8000ff] block text-2xl">
                 Nanda
               </span>
@@ -109,7 +113,9 @@ const NavbarApi = () => {
           />
         </button>
         <div className="flex items-center space-x-2 mb-4">
-          <span className="text-2xl font-bold text-purple-600">Nanda</span>
+          <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#c100f1] to-cyan-500 block text-2xl">
+            Nanda
+          </span>
         </div>
         <hr className="h-px bg-gray-200 border-0 dark:bg-gray-900"></hr>
         <div className="pt-4">
@@ -160,13 +166,12 @@ const NavbarApi = () => {
           )}
         </div>
         <hr></hr>
-
+        <div className="pt-6">
+          <NavbarApiMobile />
+        </div>
       </div>
     </>
-
-    
   );
 };
-
 
 export default NavbarApi;

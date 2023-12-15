@@ -1,7 +1,6 @@
 import Link from "next/link";
 import NavPage from "@/components/navPage";
 import PlayIcon from "@/components/api/PlayIcon";
-import TabelApiAnime from "@/components/api/tabelApiAnime";
 import TabelHead from "@/components/api/tabelHead";
 import apiData from "@/components/api/apiData";
 
@@ -15,19 +14,19 @@ const RandomImageReference = () => {
   );
   return (
     <div className="pr-8">
-      <h2 className="text-apiPrimary font-bold text-xl">Random Image</h2>
+      <h2 className="text-apiPrimary font-bold text-2xl">Random Image</h2>
       <div className="mt-10 w-full overflow-x-auto">
         <table className="min-w-full bg-white dark:bg-dark border dark:border-[#2c2c2c] rounded-lg">
           <TabelHead />
           <tbody>
-            <TabelApiAnime/>
+   
             {sortedEndpoints.map((endpoint, index) => (
               <tr
                 key={endpoint.id}
                 className="hover:bg-gray-100 dark:hover:bg-[#161616] dark:border-[#2c2c2c]"
               >
                 <td className="py-2 px-4 border-b dark:border-[#2c2c2c] text-sm text-center">
-                  {index + 7}
+                  {index + 1}
                 </td>
                 <td className="py-2 px-4 border-b dark:border-[#2c2c2c] text-sm text-left whitespace-nowrap">
                   {endpoint.name}

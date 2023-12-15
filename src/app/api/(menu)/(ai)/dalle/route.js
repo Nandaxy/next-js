@@ -1,6 +1,25 @@
 import { NextResponse } from "next/server";
 import fetch from "node-fetch";
 
+async function fetchImage(text) {
+  const apiUrl = `https://aemt.me/dalle?text=${text}`;
+  const response = await fetch(apiUrl);
+
+  if (!response.ok) {
+    throw new Error("Error fetching image from dalle");
+  }
+
+  const contentType = response.headers.get("Content-Type");
+
+  if (!contentType || !contentType.startsWith("image")) {
+    throw new Error("Response is not an image type");
+  }
+
+  const imageBuffer = await response.buffer();
+
+  return { contentType, imageBuffer };
+}
+
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -15,30 +34,7 @@ export async function GET(request) {
       });
     }
 
-    const apiUrl = `https://aemt.me/dalle?text=${text}`;
-    const response = await fetch(apiUrl);
-
-    if (!response.ok) {
-      return NextResponse.json({
-        code: 400,
-        status: false,
-        creator: "Nanda",
-        message: "Error! Tidak dapat fetch openai",
-      });
-    }
-
-    const contentType = response.headers.get("Content-Type");
-
-    if (!contentType || !contentType.startsWith("image")) {
-      return NextResponse.json({
-        code: 400,
-        status: false,
-        creator: "Nanda",
-        message: "Respon bukan tipe gambar",
-      });
-    }
-
-    const imageBuffer = await response.buffer();
+    const { contentType, imageBuffer } = await fetchImage(text);
 
     return new NextResponse(imageBuffer, {
       headers: {
@@ -46,7 +42,8 @@ export async function GET(request) {
       },
     });
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error("Error fetching image data:", error);
+
     return NextResponse.json({
       code: 500,
       status: false,

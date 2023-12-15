@@ -14,7 +14,7 @@ const EntertainmentReference = () => {
   );
   return (
     <div className="pr-8">
-      <h2 className="text-apiPrimary font-bold text-xl">Entertainment</h2>
+      <h2 className="text-apiPrimary font-bold text-2xl">Entertainment</h2>
       <div className="mt-10 w-full overflow-x-auto lg:overflow-x-hidden">
         <table className="min-w-full bg-white dark:bg-dark border dark:border-[#2c2c2c] rounded-lg">
           <TabelHead />
@@ -61,8 +61,8 @@ const EntertainmentReference = () => {
       <NavPage
         previousUrl="/api/api-reference/random-image"
         previousName="Random Image"
-        nextUrl=""
-        nextName=""
+        nextUrl="/api/api-reference/news"
+        nextName="News"
       />
     </div>
   );

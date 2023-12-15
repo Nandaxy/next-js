@@ -1,27 +1,22 @@
 import Link from "next/link";
-
 import NavPage from "@/components/navPage";
 import PlayIcon from "@/components/api/PlayIcon";
-import TabelHead from "@/components/api/tabelHead";
 import apiData from "@/components/api/apiData";
+import TabelHead from "@/components/api/tabelHead";
 
-const DownloadReference = () => {
-  const downloaderEndpoints = apiData.filter(
-    (category) => category.category === "downloader"
+const NewsReference = () => {
+  const aiEndpoints = apiData.filter(
+    (category) => category.category === "news"
   )[0].endpoints;
 
-  const sortedDownloaderEndpoints = [...downloaderEndpoints].sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
   return (
     <div className="pr-8">
-      <h2 className="text-apiPrimary font-bold text-2xl">Downloader</h2>
+      <h2 className="text-apiPrimary font-bold text-2xl">News</h2>
       <div className="mt-10 w-full overflow-x-auto lg:overflow-x-hidden">
         <table className="min-w-full bg-white dark:bg-dark border dark:border-[#2c2c2c] rounded-lg">
           <TabelHead />
-
           <tbody>
-            {sortedDownloaderEndpoints.map((endpoint, index) => (
+            {aiEndpoints.map((endpoint, index) => (
               <tr
                 key={endpoint.id}
                 className="hover:bg-gray-100 dark:hover:bg-[#161616] dark:border-[#2c2c2c]"
@@ -60,17 +55,17 @@ const DownloadReference = () => {
         </table>
       </div>
       <NavPage
-        previousUrl="/api/api-reference/ai"
-        previousName="OpenAI"
-        nextUrl="/api/api-reference/islami"
-        nextName="Islami"
+        previousUrl="/api/api-reference/entertainment"
+        previousName="Entertainment"
+        nextUrl=""
+        nextName=""
       />
     </div>
   );
 };
 
 export const metadata = {
-  title: "API - Downloader",
+  title: "API - OpenAI",
   description: "Explore a world of free APIs for your projects.",
 };
-export default DownloadReference ;
+export default NewsReference;
