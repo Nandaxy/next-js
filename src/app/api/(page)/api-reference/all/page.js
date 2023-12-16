@@ -10,6 +10,7 @@ import TabelHeadAll from "@/components/api/tabelHeadAll";
 const AllReference = () => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
 
   let rowNumber = (currentPage - 1) * rowsPerPage;
 
@@ -19,8 +20,6 @@ const AllReference = () => {
       category: category.category,
     }))
   );
-
-  const [searchTerm, setSearchTerm] = useState("");
 
   const filteredApiData = flattenedApiData.filter((endpoint) =>
     endpoint.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -32,37 +31,44 @@ const AllReference = () => {
     return nameA.localeCompare(nameB);
   });
 
-  // Calculate the total number of pages
   const totalPages = Math.ceil(sortedAndFilteredApiData.length / rowsPerPage);
 
-  // Handle changing the page
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
 
-  // Handle changing the number of rows
   const handleRowsPerPageChange = (newRowsPerPage) => {
     setRowsPerPage(newRowsPerPage);
-    setCurrentPage(1); // Reset to the first page when changing the number of rows
+    setCurrentPage(1);
   };
 
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    setCurrentPage(1);
+  };
   const getPageNumbers = () => {
     const pageNumbers = [];
     const totalPagesToShow = Math.min(totalPages, 5);
-    const halfRange = Math.floor(totalPagesToShow / 2);
 
-    let startPage = Math.max(1, currentPage - halfRange);
-    let endPage = Math.min(totalPages, currentPage + halfRange);
+    if (totalPages <= totalPagesToShow) {
+      for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i);
+      }
+    } else {
+      const halfRange = Math.floor(totalPagesToShow / 2);
+      let startPage = Math.max(1, currentPage - halfRange);
+      let endPage = Math.min(totalPages, currentPage + halfRange - 1);
 
-    // Ensure the range is centered around the current page
-    if (currentPage + halfRange > totalPages) {
-      startPage -= currentPage + halfRange - totalPages;
-    } else if (currentPage - halfRange < 1) {
-      endPage += 1 - (currentPage - halfRange);
-    }
+      if (currentPage + halfRange > totalPages) {
+        startPage -= currentPage + halfRange - totalPages;
+      } else if (currentPage - halfRange < 1) {
+        endPage += 1 - (currentPage - halfRange);
+      }
 
-    for (let i = startPage; i <= endPage; i++) {
-      pageNumbers.push(i);
+      for (let i = startPage; i <= endPage; i++) {
+        pageNumbers.push(i);
+      }
     }
 
     return pageNumbers;
@@ -79,7 +85,7 @@ const AllReference = () => {
             placeholder="Search..."
             className="w-80 h-6 focus:outline-none dark:bg-dark"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={handleSearch}
           />
         </div>
       </div>
@@ -140,7 +146,7 @@ const AllReference = () => {
             id="rowsPerPage"
             value={rowsPerPage}
             onChange={(e) => handleRowsPerPageChange(Number(e.target.value))}
-            className="bg-white border rounded-md px-2 py-1 focus:outline-none focus:border-blue-500 cursor-pointer"
+            className="bg-white dark:bg-dark border rounded-md px-2 py-1 focus:outline-none focus:border-blue-500 cursor-pointer"
           >
             <option value={5}>5 rows</option>
             <option value={10}>10 rows</option>
@@ -150,14 +156,14 @@ const AllReference = () => {
         </div>
 
         <div className="mt-4 flex items-center justify-between pb-4">
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center ">
             <span className="mr-2 hidden md:block">
               Page {currentPage} of {totalPages}
             </span>
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
-              className="px-3 py-1 rounded-md bg-blue-500 text-white focus:outline-none"
+              className="px-3 py-1 rounded-l-md border-2 border-gray-200 dark:border-[#1b1b1b] dark:hover:bg-[#1d1d1d] focus:outline-none hover:bg-gray-100"
             >
               {"<"}
             </button>
@@ -165,10 +171,10 @@ const AllReference = () => {
               <button
                 key={pageNumber}
                 onClick={() => handlePageChange(pageNumber)}
-                className={`px-3 py-1 rounded-md ${
+                className={`px-3 py-1 border-2 border-gray-200 transition-colors dark:border-[#1b1b1b] ${
                   currentPage === pageNumber
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-200 text-gray-700 hover:bg-blue-500 hover:text-white"
+                    ? "bg-blue-500 dark:bg-blue-950 text-white"
+                    : " text-gray-700 hover:bg-blue-300 hover:text-white dark:text-gray-300 dark:hover:bg-blue-700"
                 } focus:outline-none`}
               >
                 {pageNumber}
@@ -177,7 +183,7 @@ const AllReference = () => {
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className="px-3 py-1 rounded-md bg-blue-500 text-white focus:outline-none"
+              className="px-3 py-1 rounded-r-md border-2 border-gray-200 focus:outline-none hover:bg-gray-100 dark:border-[#1b1b1b] dark:hover:bg-[#1d1d1d] "
             >
               {">"}
             </button>

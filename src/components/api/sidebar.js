@@ -64,7 +64,7 @@ const Sidebar = () => {
           <div className="flex flex-col">
             <LinkStyles link="/api/api-reference/all" activeLinks={activeLinks}>
               <div className="text-sm flex flex-warp">
-                <FontAwesomeIcon icon={faBars} className="m-auto mr-2" />
+                <FontAwesomeIcon icon={faBars} className="m-auto mr-3 w-[16px] h-[16px]" />
                 All Feature
               </div>
             </LinkStyles>
@@ -75,7 +75,7 @@ const Sidebar = () => {
           <div className="flex flex-col">
             <LinkStyles link="/api/api-reference/ai" activeLinks={activeLinks}>
               <div className="text-sm flex flex-warp">
-                <FontAwesomeIcon icon={faRobot} className="m-auto mr-2" />
+                <FontAwesomeIcon icon={faRobot} className="m-auto mr-3 w-[16px] h-[16px]" />
                 OpenAI
               </div>
             </LinkStyles>
@@ -88,7 +88,7 @@ const Sidebar = () => {
               activeLinks={activeLinks}
             >
               <div className="text-sm flex flex-warp">
-                <FontAwesomeIcon icon={faDownload} className="m-auto mr-2" />
+                <FontAwesomeIcon icon={faDownload} className="m-auto mr-3 w-[16px] h-[16px]" />
                 Downloader
               </div>
             </LinkStyles>
@@ -101,7 +101,7 @@ const Sidebar = () => {
               activeLinks={activeLinks}
             >
               <div className="text-sm flex flex-warp">
-                <FontAwesomeIcon icon={faMoon} className="m-auto mr-2" />
+                <FontAwesomeIcon icon={faMoon} className="m-auto mr-3 w-[16px] h-[16px]" />
                 Islami
               </div>
             </LinkStyles>
@@ -114,7 +114,7 @@ const Sidebar = () => {
               activeLinks={activeLinks}
             >
               <div className="text-sm flex flex-warp">
-                <FontAwesomeIcon icon={faCamera} className="m-auto mr-2" />
+                <FontAwesomeIcon icon={faCamera} className="m-auto mr-3 w-[16px] h-[16px]" />
                 Random Image
               </div>
             </LinkStyles>
@@ -128,7 +128,7 @@ const Sidebar = () => {
               activeLinks={activeLinks}
             >
               <div className="text-sm flex flex-warp">
-                <FontAwesomeIcon icon={faFaceSmile} className="m-auto mr-2" />
+                <FontAwesomeIcon icon={faFaceSmile} className="m-auto mr-3 w-[16px] h-[16px]" />
                 Enterteiment
               </div>
             </LinkStyles>
@@ -143,7 +143,7 @@ const Sidebar = () => {
               activeLinks={activeLinks}
             >
               <div className="text-sm flex flex-warp">
-                <FontAwesomeIcon icon={faNewspaper} className="m-auto mr-2" />
+                <FontAwesomeIcon icon={faNewspaper} className="m-auto mr-3 w-[16px] h-[16px]" />
                 News
               </div>
             </LinkStyles>

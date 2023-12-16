@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import Link from "next/link";
 import DarkModeBtn from "../darkModeBtn";
-import SearchBox from "./searchBox";
+import SearchBox from "@/components/api/searchBox"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -43,7 +43,7 @@ const NavbarApi = () => {
   return (
     <>
       <div className="fixed top-0 left-0 w-full opacity-90 z-10">
-        <nav className="bg-white dark:bg-black p-4 flex justify-between items-center border-b dark:border-gray-800">
+        <nav className="bg-white dark:bg-dark p-4 flex justify-between items-center border-b dark:border-gray-800">
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleMenu}
@@ -52,7 +52,7 @@ const NavbarApi = () => {
               <FontAwesomeIcon icon={faBars} className="text-2xl m-auto" />
             </button>
             <Link href={href} className="text-xl font-bold md:block m-auto">
-              <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#da00ff] to-[#8000ff] block text-2xl">
+              <span className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#da00ff] to-[#8000ff] dark:from-cyan-400 dark:to-indigo-400 block text-2xl">
                 Nanda
               </span>
             </Link>

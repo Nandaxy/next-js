@@ -65,7 +65,7 @@ const NewsReference = () => {
 };
 
 export const metadata = {
-  title: "API - OpenAI",
+  title: "API - News",
   description: "Explore a world of free APIs for your projects.",
 };
 export default NewsReference;

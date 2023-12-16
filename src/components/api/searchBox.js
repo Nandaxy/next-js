@@ -6,8 +6,9 @@ const SearchBox = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [selectedResultIndex, setSelectedResultIndex] = useState(null); // Track the selected result
   const inputRef = useRef(null);
-
+  const firstResultRef = useRef(null);
   const handleSearchClick = () => {
     setIsOpen(!isOpen);
   };
@@ -18,12 +19,16 @@ const SearchBox = () => {
 
   const handleInputChange = (event) => {
     setSearchText(event.target.value);
+    setSelectedResultIndex(null); // Reset selected result when input changes
   };
+
 
   const handleSearch = () => {
     const results = searchPages(searchText);
     setSearchResults(results);
+    setSelectedResultIndex(0); // Set the first result as selected
   };
+
 
   const handleOutsideClick = (event) => {
     if (
@@ -36,14 +41,31 @@ const SearchBox = () => {
   };
 
   const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      if (selectedResultIndex !== null && searchResults[selectedResultIndex]) {
+        window.location.href = searchResults[selectedResultIndex].link;
+      }
+    }
     if (event.ctrlKey && event.key === "k") {
-      event.preventDefault(); 
+      event.preventDefault();
       handleSearchClick();
     } else if (event.key === "Escape") {
-      event.preventDefault();     
+      event.preventDefault();
       handleCloseModal();
     }
-  };    
+  };
+
+  useEffect(() => {
+    // Set focus on the input when the modal is opened
+    if (isOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+    // Set focus on the first result when results are available
+    if (searchResults.length > 0 && firstResultRef.current) {
+      firstResultRef.current.focus();
+    }
+  }, [isOpen, searchResults]);
 
   useEffect(() => {
     document.body.addEventListener("click", handleOutsideClick);
@@ -72,6 +94,8 @@ const SearchBox = () => {
   useEffect(() => {
     handleSearch();
   }, [searchText]);
+
+  
   return (
     <>
       <div className="relative inline-block">
@@ -100,9 +124,9 @@ const SearchBox = () => {
             </div>
           </div>
         </div>
-        {isOpen && (
-          <div className="fixed inset-0 bg-gray-900 justify-center flex">
-            <div className="flex flex-col">
+         {isOpen && (
+        <div className="fixed inset-0 bg-black/95 justify-center flex">
+          <div className="flex flex-col">
               <div
                 className={`z-[99999] flex mt-10 md:mt-36 px-4 py-6 items-center ${
                   isOpen ? "dark:bg-dark bg-white" : ""
@@ -111,7 +135,6 @@ const SearchBox = () => {
                 } max-w-full modal-container`}
               >
                 <div className="items-center flex">
-              
                   <input
                     ref={inputRef}
                     type="text"
@@ -131,18 +154,21 @@ const SearchBox = () => {
                 </div>
               </div>
               {searchText.trim() !== "" && (
-                <div className="bg-white dark:bg-dark max-h-96 p-4 rounded-b-lg">
+                <div className="bg-white dark:bg-dark max-h-full p-4 rounded-b-lg">
                   {searchResults.map((page, index) => (
                     <div key={index}>
                       <Link
-                        className="bg-gray-100 dark:bg-[#000000]/70 p-2 rounded-md flex items-center my-3"
+                        className="bg-gray-100 dark:bg-[#000000]/70 p-2 rounded-lg flex items-center my-3 hover:bg-cyan-400"
                         href={page.link}
                         onClick={handleCloseModal}
                       >
-                        <span className="mr-2 border-2 border-gray-200 dark:border-[#000000]/70 p-2 rounded-lg text-black/60 dark:text-white/60">
+                        <span className="mr-2 border-2 border-gray-200 dark:border-[#000000]/70 p-2 rounded-lg text-black/80 dark:text-white/60">
                           #
                         </span>
-                        {page.title}
+                        <div className="flex flex-col">
+                          <span className="font-medium pb-1">{page.title}</span>
+                          <span className="text-xs text-gray-500">{page.description}</span>
+                        </div>
                       </Link>
                     </div>
                   ))}
@@ -169,4 +195,4 @@ const SearchBox = () => {
   );
 };
 
-export default SearchBox;
+export default SearchBox

@@ -2,23 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-
 html {
-    scroll-behavior: smooth;
-  }
+  scroll-behavior: smooth;
+}
 
 .animate-bounce {
-    animation: bounce 5s infinite;
-    z-index: -1;
-  }
-  
+  animation: bounce 5s infinite;
+  z-index: -1;
+}
 
 @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+  0%,
+  100% {
+    transform: translateY(0);
   }
-  
+  50% {
+    transform: translateY(-10px);
+  }
+}
