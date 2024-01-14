@@ -17,7 +17,8 @@ export async function GET(request) {
     }
 
     const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth() + 1;
+    let currentMonth = new Date().getMonth() + 1;
+    currentMonth = currentMonth.toString().padStart(2, '0'); // Add padding if needed
     const apiUrl = `https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/adzan/${cityName}/${currentYear}/${currentMonth}.json`;
 
     const response = await fetch(apiUrl);
