@@ -17,16 +17,13 @@ export async function GET(request) {
     }
 
     const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth() + 1;
+    let currentMonth = new Date().getMonth() + 1;
+    currentMonth = currentMonth.toString().padStart(2, '0');
     const apiUrl = `https://raw.githubusercontent.com/lakuapik/jadwalsholatorg/master/adzan/${cityName}/${currentYear}/${currentMonth}.json`;
 
     const response = await fetch(apiUrl);
 
     if (response.ok) {
-      try {
-        await fetch(`https://counter.nandaxy.repl.co/hit`);
-      } catch (error) {}
-
       const data = await response.json();
 
       return new NextResponse(
