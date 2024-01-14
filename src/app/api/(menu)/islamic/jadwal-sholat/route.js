@@ -31,9 +31,6 @@ export async function GET(request) {
       );
 
       if (todaySchedule) {
-        try {
-          await fetch(`https://counter.nandaxy.repl.co/hit`);
-        } catch (error) {}
         return new NextResponse(
           JSON.stringify({
             status: 200,
@@ -67,7 +64,7 @@ export async function GET(request) {
         JSON.stringify({
           status: response.status,
           author: "Nanda",
-          message: "Kota tidak di temukan",
+          message: "Kota tidak ditemukan",
         }),
         { status: response.status }
       );
